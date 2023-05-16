@@ -32,7 +32,7 @@ header > p {
 
 .title {
     background: linear-gradient(to right, #c7d996, #65adc8);
-    background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: flex;
     align-items: center;
