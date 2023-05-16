@@ -20,14 +20,85 @@ body {
 
 header {
     text-align: center;
+    padding: 10px 0;
+}
+
+header > p {
+    color: var(--text-color);
+    font-style: italic;
+    font-weight: 500;
+    margin: 0;
 }
 
 .title {
-    background-image: linear-gradient(60deg, var(--primary-btn), var(--secondary-btn), var(--accent));
-    background-clip: text;
-    color: transparent;
+    background: linear-gradient(to right, #c7d996, #65adc8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 h1 {
     margin: 0;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    gap: 20px;
+    padding: 20px;
+}
+
+.side-bar {
+    padding: 5px 10px;
+    border-radius: 15px;
+    border: 2px solid var(--secondary-btn);
+    margin: 10px;
+    flex: 1;
+    height: 100%;
+}
+
+.side-bar > h2 {
+    color: var(--primary-btn);
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding-left: 15px;
+}
+
+button {
+    background-color: var(--bg-color);
+    font-size: 1.2rem;
+    color: var(--text-color);
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+}
+
+.bx {
+    color: var(--accent);
+}
+
+.main-list {
+    flex: 3;
+    border: 2px solid var(--secondary-btn);
+    border-radius: 15px;
+    padding: 5px 10px;
+    height: 100%;
+}
+
+.main-list > h2 {
+    margin: 0;
+    color: var(--primary-btn);
+}
+
+button:hover {
+    background-color: #303030;
 }

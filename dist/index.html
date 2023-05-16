@@ -6,12 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>todo list</title>
     <script src="main.js" defer></script>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
-      <h1 class="title"><i class='bx bx-list-check'></i> todo list</h1>
-      <p>productivity made simple.</p>
+      <h1 class="title"><i class="bx bx-list-check"></i> ToDo List</h1>
+      <p>productivity made simple</p>
     </header>
+    <main>
+      <div class="side-bar">
+        <h2>Projects</h2>
+        <hr>
+        <ul class="projects">
+          <li><button type="button" class="addproj"><i class='bx bx-folder-plus'></i> Add project</button></li>
+        </ul>
+      </div>
+      <div class="main-list">
+        <h2>To do: </h2>
+        <hr>
+        <ul class="tasks">
+          <li><button type="button" class="addproj"><i class='bx bx-pencil'></i> Add tasks</button></li>
+        </ul>
+      </div>
+    </main>
   </body>
 </html>
