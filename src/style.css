@@ -151,3 +151,11 @@ form > button {
   text-align: center;
   font-size: 0.5rem;
 }
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
