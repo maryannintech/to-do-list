@@ -12,12 +12,16 @@
     />
   </head>
   <body>
+    <!-- HEADER -->
     <header>
       <h1 class="title"><i class="bx bx-list-check"></i> ToDo List</h1>
       <p>productivity made simple</p>
     </header>
+
+    <!-- MAIN -->
     <main>
       <div class="folders">
+        <!-- PROJECT NAVS -->
         <div class="projects">
           <h2>Projects</h2>
           <hr />
@@ -35,8 +39,10 @@
           <button type="button" class="task-proj">
             <i class="bx bx-folder-open"></i> All your project's tasks
           </button>
+          <hr />
           <ul class="projects-ul"></ul>
         </div>
+        <!-- LISTS -->
         <div class="lists">
           <h2>Lists</h2>
           <hr />
@@ -44,8 +50,8 @@
             <i class="bx bx-folder-plus"></i> Add new list
           </button>
           <form class="list-form hide" action="" method="post">
-            <label for="list-name">Project name:</label
-            ><input type="text" id="list-name" name="list-name" required/>
+            <label for="list-name">List name:</label
+            ><input type="text" id="list-name" name="l-name" required />
             <div class="form-buttons">
               <button type="submit" class="list-add">Add</button>
               <button type="button" class="list-cancel">Cancel</button>
@@ -54,9 +60,12 @@
           <button type="button" class="task-list">
             <i class="bx bx-folder-open"></i> All your list's tasks
           </button>
+          <hr />
           <ul class="lists-ul"></ul>
         </div>
       </div>
+
+      <!-- TASK TAB -->
       <div class="main-list">
         <h2>Things to do</h2>
         <hr />
@@ -80,8 +89,12 @@
             required
           />
           <div class="form-buttons">
-            <button type="submit" class="button-center task-add">Add task</button>
-            <button type="button" class="button-center task-cancel">Cancel</button>
+            <button type="submit" class="button-center task-add">
+              Add task
+            </button>
+            <button type="button" class="button-center task-cancel">
+              Cancel
+            </button>
           </div>
         </form>
         <ul class="tasks"></ul>

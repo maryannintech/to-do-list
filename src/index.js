@@ -14,20 +14,6 @@ addProjBtn.addEventListener("click", () => {
   addProjBtn.classList.add("hide");
 });
 
-const listForm = document.querySelector(".list-form");
-listForm.addEventListener("click", submitList);
-const listCancel = document.querySelector(".list-cancel");
-listCancel.addEventListener("click", () => {
-  listForm.classList.add("hide");
-  addListBtn.classList.remove("hide");
-});
-
-const addListBtn = document.querySelector(".addlist");
-addListBtn.addEventListener("click", () => {
-  listForm.classList.remove("hide");
-  addListBtn.classList.add("hide");
-});
-
 const taskForm = document.querySelector(".task-form");
 const addTaskBtn = document.querySelector(".addtask");
 addTaskBtn.addEventListener("click", () => {
@@ -56,7 +42,7 @@ function submitProj(event) {
 
   projForm.classList.add("hide");
   addProjBtn.classList.remove("hide");
-  projForm.reset()
+  projForm.reset();
 }
 
 function addNewProj(proj) {
@@ -71,7 +57,7 @@ function displayProj() {
   for (const proj of projList) {
     const projItems = document.createElement("button");
     const folderIcon = document.createElement("i");
-    folderIcon.className = "bx bxs-folder"
+    folderIcon.className = "bx bxs-folder";
     projItems.appendChild(folderIcon);
     projItems.textContent = proj;
     projUL.appendChild(projItems);
@@ -82,8 +68,21 @@ function saveProj() {
   localStorage.setItem("projList", JSON.stringify(projList));
 }
 
+// lists
+const listForm = document.querySelector(".list-form");
+listForm.addEventListener("click", submitList);
+const listCancel = document.querySelector(".list-cancel");
+listCancel.addEventListener("click", () => {
+  listForm.classList.add("hide");
+  addListBtn.classList.remove("hide");
+});
 
-// lists 
+const addListBtn = document.querySelector(".addlist");
+addListBtn.addEventListener("click", () => {
+  listForm.classList.remove("hide");
+  addListBtn.classList.add("hide");
+});
+
 let listItems = [];
 if (localStorage.getItem("listItems")) {
   listItems = JSON.parse(localStorage.getItem("listItems"));
@@ -97,7 +96,7 @@ function submitList(event) {
 
   listForm.classList.add("hide");
   addListBtn.classList.remove("hide");
-  listForm.reset()
+  listForm.reset();
 }
 
 function addNewList(list) {
@@ -112,7 +111,7 @@ function displayList() {
   for (const item of listItems) {
     const listName = document.createElement("button");
     const folderIcon = document.createElement("i");
-    folderIcon.className = "bx bxs-folder"
+    folderIcon.className = "bx bxs-folder";
     listName.appendChild(folderIcon);
     listName.textContent = item;
     listUL.appendChild(listName);
