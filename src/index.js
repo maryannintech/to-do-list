@@ -43,6 +43,8 @@ taskCancel.addEventListener("click", () => {
 
 
 // app logic
+
+// proj
 let projList = [];
 const projName = document.querySelector("#proj-name");
 if (localStorage.getItem("projList")) {
