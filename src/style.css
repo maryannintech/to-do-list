@@ -86,8 +86,8 @@ button {
     font-weight: 500;
     border: none;
     border-radius: 5px;
+    text-align: left;
     width: 100%;
-    padding: 3px;
 }
 
 h2 {
