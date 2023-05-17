@@ -152,6 +152,10 @@ form > button {
   font-size: 0.5rem;
 }
 
+.bxs-folder {
+  margin-right: 5px;
+}
+
 .hide {
   display: none;
 }

@@ -1,7 +1,6 @@
 import "./style.css";
 
 const projForm = document.querySelector(".proj-form");
-
 projForm.addEventListener("submit", submitProj);
 const projCancel = document.querySelector(".proj-cancel");
 projCancel.addEventListener("click", () => {
@@ -59,7 +58,7 @@ function displayProj() {
     const folderIcon = document.createElement("i");
     folderIcon.className = "bx bxs-folder";
     projItems.appendChild(folderIcon);
-    projItems.textContent = proj;
+    projItems.appendChild(document.createTextNode(proj));
     projUL.appendChild(projItems);
   }
 }
@@ -70,7 +69,7 @@ function saveProj() {
 
 // lists
 const listForm = document.querySelector(".list-form");
-listForm.addEventListener("click", submitList);
+listForm.addEventListener("submit", submitList);
 const listCancel = document.querySelector(".list-cancel");
 listCancel.addEventListener("click", () => {
   listForm.classList.add("hide");
@@ -113,7 +112,7 @@ function displayList() {
     const folderIcon = document.createElement("i");
     folderIcon.className = "bx bxs-folder";
     listName.appendChild(folderIcon);
-    listName.textContent = item;
+    listName.appendChild(document.createTextNode(item));
     listUL.appendChild(listName);
   }
 }
