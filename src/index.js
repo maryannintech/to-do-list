@@ -15,7 +15,7 @@ addProjBtn.addEventListener("click", () => {
 });
 
 const listForm = document.querySelector(".list-form");
-const listName = document.querySelector("#list-name");
+
 const listSubmit = document.querySelector(".list-add");
 const listCancel = document.querySelector(".list-cancel");
 listCancel.addEventListener("click", () => {
@@ -41,20 +41,23 @@ taskCancel.addEventListener("click", () => {
   addTaskBtn.classList.remove("hide");
 });
 
-
 // app logic
 
 // proj
 let projList = [];
-const projName = document.querySelector("#proj-name");
 if (localStorage.getItem("projList")) {
   projList = JSON.parse(localStorage.getItem("projList"));
 }
 
 function submitProj(event) {
-    event.preventDefault();
-    const proj = projName.value.trim();
-    addNewProj(proj);
+  event.preventDefault();
+  const projName = document.querySelector("#proj-name");
+  const proj = projName.value.trim();
+  addNewProj(proj);
+
+  projForm.classList.add("hide");
+  addProjBtn.classList.remove("hide");
+  projForm.reset()
 }
 
 function addNewProj(proj) {
@@ -64,18 +67,21 @@ function addNewProj(proj) {
 }
 
 function displayProj() {
-    const projUL = document.querySelector(".projects-ul");
-    for (const proj of projList) {
-      const projItems = document.createElement("button");
-      projItems.textContent = proj;
-      projUL.appendChild(projItems);
-    }
+  const projUL = document.querySelector(".projects-ul");
+  for (const proj of projList) {
+    const projItems = document.createElement("button");
+    const folderIcon = document.createElement("i");
+    folderIcon.className = "bx bxs-folder"
+    projItems.appendChild(folderIcon);
+    projItems.textContent = proj;
+    projUL.appendChild(projItems);
   }
+}
 
 function saveProj() {
   localStorage.setItem("projList", JSON.stringify(projList));
 }
 
-window.onload = function() {
+window.onload = function () {
   displayProj();
 };
