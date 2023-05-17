@@ -29,3 +29,16 @@ addListBtn.addEventListener("click", () => {
     listForm.classList.remove("hide");
     addListBtn.classList.add("hide");
 })
+
+const taskForm = document.querySelector(".task-form");
+const addTaskBtn = document.querySelector(".addtask");
+addTaskBtn.addEventListener("click", () => {
+    taskForm.classList.remove("hide");
+    addTaskBtn.classList.add("hide");
+})
+const taskCancel = document.querySelector(".task-cancel");
+taskCancel.addEventListener("click", () => {
+    taskForm.classList.add("hide");
+    addTaskBtn.classList.remove("hide");
+})
+
