@@ -65,10 +65,11 @@ main {
     height: 100%;
 }
 
-.side-bar > h2 {
+main > h2 {
     color: var(--primary-btn);
     margin: 0;
 }
+
 
 ul {
     list-style: none;
