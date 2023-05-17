@@ -24,6 +24,16 @@
           <button type="button" class="addproj">
             <i class="bx bx-folder-plus"></i> Add new project
           </button>
+          <form class="proj-form">
+            <label for="proj-name">Project name:</label
+            ><input type="text" id="proj-name" name="proj-name" />
+            <div class="form-buttons">
+              <div class="form-buttons"><button type="submit">Add</button></div>
+              <div class="form-buttons">
+                <button type="submit">Cancel</button>
+              </div>
+            </div>
+          </form>
           <button type="button" class="task-proj">
             <i class="bx bx-folder-open"></i> All your project's tasks
           </button>
@@ -35,6 +45,16 @@
           <button type="button" class="addlist">
             <i class="bx bx-folder-plus"></i> Add new list
           </button>
+          <form class="list-form">
+            <label for="list-name">Project name:</label
+            ><input type="text" id="list-name" name="list-name" />
+            <div class="form-buttons">
+              <div class="form-buttons"><button type="submit">Add</button></div>
+              <div class="form-buttons">
+                <button type="submit">Cancel</button>
+              </div>
+            </div>
+          </form>
           <button type="button" class="task-list">
             <i class="bx bx-folder-open"></i> All your list's tasks
           </button>
@@ -63,8 +83,10 @@
             value="yes"
             required
           />
-          <button type="submit">Add task</button>
-          <button type="button" class="cancel">Cancel</button>
+          <div class="form-buttons">
+            <button type="submit" class="button-center">Add task</button>
+            <button type="button" class="cancel button-center">Cancel</button>
+          </div>
         </form>
         <ul class="tasks"></ul>
       </div>

@@ -124,6 +124,8 @@ form {
   margin: 0 auto;
   border-radius: 15px;
   color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
 }
 
 button:hover {
@@ -133,9 +135,19 @@ button:hover {
 input {
   display: block;
   text-align: center;
-  margin: 3px 0;
+  margin: 4px 0;
+}
+
+.form-buttons {
+  display: flex;
+  text-align: center;
+  gap: 10px;
 }
 
 form > button {
+  padding: 10px 5px;
+  text-align: center;
   width: fit-content;
+  text-align: center;
+  font-size: 0.5rem;
 }
