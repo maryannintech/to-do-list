@@ -64,7 +64,7 @@ function addNewProj(proj) {
 function displayProj() {
     const projUL = document.querySelector(".projects-ul");
     for (const proj of projList) {
-      const projItems = document.createElement("li");
+      const projItems = document.createElement("button");
       projItems.textContent = proj;
       projUL.appendChild(projItems);
     }
@@ -73,3 +73,7 @@ function displayProj() {
 function saveProj() {
   localStorage.setItem("projList", JSON.stringify(projList));
 }
+
+window.onload = function() {
+  displayProj();
+};
