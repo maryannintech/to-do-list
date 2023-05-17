@@ -1,6 +1,7 @@
 import "./style.css";
 
 const projForm = document.querySelector(".proj-form");
+
 projForm.addEventListener("submit", submitProj);
 const projCancel = document.querySelector(".proj-cancel");
 projCancel.addEventListener("click", () => {
@@ -43,12 +44,12 @@ taskCancel.addEventListener("click", () => {
 
 // app logic
 let projList = [];
+const projName = document.querySelector("#proj-name");
 if (localStorage.getItem("projList")) {
   projList = JSON.parse(localStorage.getItem("projList"));
 }
 
 function submitProj(event) {
-    const projName = document.querySelector("#proj-name");
     event.preventDefault();
     const proj = projName.value.trim();
     addNewProj(proj);
@@ -61,7 +62,7 @@ function addNewProj(proj) {
 }
 
 function displayProj() {
-    const projUL = document.querySelector(".proj-ul");
+    const projUL = document.querySelector(".projects-ul");
     for (const proj of projList) {
       const projItems = document.createElement("li");
       projItems.textContent = proj;
