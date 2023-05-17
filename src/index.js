@@ -40,10 +40,18 @@ taskCancel.addEventListener("click", () => {
   addTaskBtn.classList.remove("hide");
 });
 
+
 // app logic
 let projList = [];
 if (localStorage.getItem("projList")) {
   projList = JSON.parse(localStorage.getItem("projList"));
+}
+
+function submitProj(event) {
+    const projName = document.querySelector("#proj-name");
+    event.preventDefault();
+    const proj = projName.value.trim();
+    addNewProj(proj);
 }
 
 function addNewProj(proj) {
@@ -52,22 +60,15 @@ function addNewProj(proj) {
   saveProj();
 }
 
+function displayProj() {
+    const projUL = document.querySelector(".proj-ul");
+    for (const proj of projList) {
+      const projItems = document.createElement("li");
+      projItems.textContent = proj;
+      projUL.appendChild(projItems);
+    }
+  }
+
 function saveProj() {
   localStorage.setItem("projList", JSON.stringify(projList));
-}
-
-function displayProj() {
-  const projUL = document.querySelector(".proj-ul");
-  for (const proj of projList) {
-    const projItems = document.createElement("li");
-    projItems.textContent = proj;
-    projUL.appendChild(projItems);
-  }
-}
-
-function submitProj(event) {
-    const projName = document.querySelector("#proj-name");
-    event.preventDefault();
-    const proj = projName.value.trim();
-    addNewProj(proj);
 }
