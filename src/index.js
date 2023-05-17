@@ -5,6 +5,8 @@ const projForm = document.querySelector(".proj-form");
 const projName = document.querySelector("#proj-name");
 const projSubmit = document.querySelector(".proj-add");
 const projCancel = document.querySelector(".proj-cancel");
+const projUL = document.querySelector(".proj-ul");
+const addProjBtn = document.querySelector(".addproj");
 
 const listForm = document.querySelector(".list-form");
 const listName = document.querySelector("#list-name");
