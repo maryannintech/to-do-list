@@ -1,118 +1,126 @@
-@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700&display=swap");
 
 * {
-    box-sizing: border-box;
-    font-family: 'Wix Madefor Display', sans-serif;
+  box-sizing: border-box;
+  font-family: "Wix Madefor Display", sans-serif;
 }
 
 :root {
-    --bg-color: #020302;
-    --text-color: #fcfdfc;
-    --primary-btn: #c7d996;
-    --secondary-btn: #f6e5f1;
-    --accent: #65adc8;
+  --bg-color: #020302;
+  --text-color: #fcfdfc;
+  --primary-btn: #c7d996;
+  --secondary-btn: #f6e5f1;
+  --accent: #65adc8;
 }
 
 body {
-    margin: 0;
-    background-color: var(--bg-color);
+  margin: 0;
+  background-color: var(--bg-color);
 }
 
 header {
-    text-align: center;
-    padding: 20px 0;
+  text-align: center;
+  padding: 20px 0;
 }
 
 header > p {
-    color: var(--text-color);
-    font-style: italic;
-    font-weight: 500;
-    margin: 0;
+  color: var(--text-color);
+  font-style: italic;
+  font-weight: 500;
+  margin: 0;
 }
 
 .title {
-    background: linear-gradient(to right, #c7d996, #65adc8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+  background: linear-gradient(to right, #c7d996, #65adc8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 h1 {
-    margin: 0;
+  margin: 0;
 }
 
 main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    color: var(--text-color);
-    gap: 20px;
-    padding: 10px 20px;
-    height: 80vh;
-    margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  gap: 20px;
+  padding: 10px 20px;
+  height: 80vh;
+  margin-bottom: 20px;
 }
 
 .folders {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    gap: 20px;
-    flex: 1;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  gap: 20px;
+  flex: 1;
+  height: 100%;
 }
 
 .projects,
 .lists {
-    border-radius: 15px;
-    border: 2px solid var(--secondary-btn);
-    padding: 5px 10px;
-    overflow-y:auto;
-    height: 100%;
+  border-radius: 15px;
+  border: 2px solid var(--secondary-btn);
+  padding: 5px 10px;
+  overflow-y: auto;
+  height: 100%;
 }
 
 ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 button {
-    background-color: var(--bg-color);
-    font-size: 1.2rem;
-    color: var(--text-color);
-    font-weight: 500;
-    border: none;
-    border-radius: 5px;
-    text-align: left;
-    width: 100%;
+  background-color: var(--bg-color);
+  font-size: 1.2rem;
+  color: var(--text-color);
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  text-align: left;
+  width: 100%;
 }
 
 h2 {
-    color: var(--primary-btn);
-    margin: 0;
+  color: var(--primary-btn);
+  margin: 0;
 }
 
 .bx {
-    color: var(--accent);
+  color: var(--accent);
 }
 
 .main-list {
-    flex: 3;
-    border: 2px solid var(--secondary-btn);
-    border-radius: 15px;
-    padding: 5px 10px;
-    height: 100%;
-    overflow-y:auto
+  flex: 3;
+  border: 2px solid var(--secondary-btn);
+  border-radius: 15px;
+  padding: 5px 10px;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .main-list > h2 {
-    margin: 0;
-    color: var(--primary-btn);
+  margin: 0;
+  color: var(--primary-btn);
 }
 
 button:hover {
-    background-color: #303030;
+  background-color: #303030;
+}
+
+input {
+    display: block;
+}
+
+form > button {
+    width: fit-content;
 }
