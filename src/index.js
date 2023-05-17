@@ -15,14 +15,13 @@ addProjBtn.addEventListener("click", () => {
 });
 
 const listForm = document.querySelector(".list-form");
-
-const listSubmit = document.querySelector(".list-add");
+listForm.addEventListener("click", submitList);
 const listCancel = document.querySelector(".list-cancel");
 listCancel.addEventListener("click", () => {
   listForm.classList.add("hide");
   addListBtn.classList.remove("hide");
 });
-const listUL = document.querySelector(".list-ul");
+
 const addListBtn = document.querySelector(".addlist");
 addListBtn.addEventListener("click", () => {
   listForm.classList.remove("hide");
@@ -68,6 +67,7 @@ function addNewProj(proj) {
 
 function displayProj() {
   const projUL = document.querySelector(".projects-ul");
+  projUL.innerHTML = "";
   for (const proj of projList) {
     const projItems = document.createElement("button");
     const folderIcon = document.createElement("i");
@@ -82,6 +82,48 @@ function saveProj() {
   localStorage.setItem("projList", JSON.stringify(projList));
 }
 
+
+// lists 
+let listItems = [];
+if (localStorage.getItem("listItems")) {
+  listItems = JSON.parse(localStorage.getItem("listItems"));
+}
+
+function submitList(event) {
+  event.preventDefault();
+  const listName = document.querySelector("#list-name");
+  const list = listName.value.trim();
+  addNewList(list);
+
+  listForm.classList.add("hide");
+  addListBtn.classList.remove("hide");
+  listForm.reset()
+}
+
+function addNewList(list) {
+  listItems.push(list);
+  displayList();
+  saveList();
+}
+
+function displayList() {
+  const listUL = document.querySelector(".lists-ul");
+  listUL.innerHTML = "";
+  for (const item of listItems) {
+    const listName = document.createElement("button");
+    const folderIcon = document.createElement("i");
+    folderIcon.className = "bx bxs-folder"
+    listName.appendChild(folderIcon);
+    listName.textContent = item;
+    listUL.appendChild(listName);
+  }
+}
+
+function saveList() {
+  localStorage.setItem("listItems", JSON.stringify(listItems));
+}
+
 window.onload = function () {
   displayProj();
+  displayList();
 };
