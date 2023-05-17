@@ -113,14 +113,29 @@ h2 {
   color: var(--primary-btn);
 }
 
+.button-center {
+  text-align: center;
+}
+
+form {
+  background-color: var(--primary-btn);
+  padding: 10px;
+  width: fit-content;
+  margin: 0 auto;
+  border-radius: 15px;
+  color: var(--bg-color);
+}
+
 button:hover {
   background-color: #303030;
 }
 
 input {
-    display: block;
+  display: block;
+  text-align: center;
+  margin: 3px 0;
 }
 
 form > button {
-    width: fit-content;
+  width: fit-content;
 }
