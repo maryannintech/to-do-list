@@ -137,6 +137,7 @@ function submitTask(event) {
   const taskDetails = document.querySelector("#details");
   const taskDueDate = document.querySelector("#dueDate");
   const task = taskName.value.trim();
+  const taskDate = taskDueDate.value.trim();
   addNewTask(task);
 
   taskForm.classList.add("hide");
