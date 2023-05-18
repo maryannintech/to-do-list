@@ -112,6 +112,7 @@ function saveList() {
 }
 
 // tasks
+
 const taskForm = document.querySelector(".task-form");
 taskForm.addEventListener("submit", submitTask);
 const addTaskBtn = document.querySelector(".addtask");
@@ -171,9 +172,6 @@ function displayTask() {
     nameTask.className = "name";
     const taskIcon = document.createElement("i");
     taskIcon.className = "bx bx-task-x";
-    taskIcon.addEventListener("click", () => {
-      taskFinish(nameTask, taskDetail, taskIcon);
-    });
     nameTask.appendChild(taskIcon);
     nameTask.appendChild(document.createTextNode(task.name));
 
@@ -205,9 +203,7 @@ function displayTask() {
     // check if task is priority
     if (task.priority) {
       taskName.classList.add("prio");
-    }
-    else {
-
+    } else {
     }
 
     taskName.append(taskElements, taskDetail);
@@ -216,18 +212,6 @@ function displayTask() {
   }
 }
 
-function deleteTask(task) {
-  const index = taskItems.indexOf(task);
-  
-}
-
-function taskFinish(taskname, taskdetail, icon) {
-  taskname.classList.add("done-task");
-  taskdetail.classList.add("done-task");
-  icon.classList.remove("bx-task-x");
-  icon.classList.remove("bx");
-  icon.className = "bx bx-task";
-}
 
 function saveTask() {
   localStorage.setItem("taskItems", JSON.stringify(taskItems));
