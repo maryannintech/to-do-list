@@ -213,6 +213,11 @@ function displayTask() {
   }
 }
 
+function deleteTask(task) {
+  const index = taskItems.indexOf(task);
+  
+}
+
 function saveTask() {
   localStorage.setItem("taskItems", JSON.stringify(taskItems));
 }
