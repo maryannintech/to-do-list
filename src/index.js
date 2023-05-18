@@ -111,13 +111,9 @@ function saveList() {
   localStorage.setItem("listItems", JSON.stringify(listItems));
 }
 
-window.onload = function () {
-  displayProj();
-  displayList();
-};
-
 // tasks
 const taskForm = document.querySelector(".task-form");
+taskForm.addEventListener("submit", submitTask);
 const addTaskBtn = document.querySelector(".addtask");
 addTaskBtn.addEventListener("click", () => {
   taskForm.classList.remove("hide");
@@ -129,3 +125,50 @@ taskCancel.addEventListener("click", () => {
   addTaskBtn.classList.remove("hide");
   taskForm.reset();
 });
+
+let taskItems = [];
+if (localStorage.getItem("taskItems")) {
+  taskItems = JSON.parse(localStorage.getItem("taskItems"));
+}
+
+function submitTask(event) {
+  event.preventDefault();
+  const taskName = document.querySelector("#task-title");
+  const task = taskName.value.trim();
+  addNewTask(task);
+
+  taskForm.classList.add("hide");
+  addTaskBtn.classList.remove("hide");
+  taskForm.reset();
+}
+
+function addNewTask(task) {
+  taskItems.push(task);
+  displayTask();
+  saveTask();
+}
+
+function displayTask() {
+  const taskUL = document.querySelector(".all-tasks-ul");
+  taskUL.innerHTML = "";
+  for (const item of taskItems) {
+    const taskName = document.createElement("button");
+    const taskIcon = document.createElement("i");
+    taskIcon.className = "bx bx-task-x";
+    taskName.appendChild(taskIcon);
+    taskName.appendChild(document.createTextNode(item));
+    taskUL.appendChild(taskName);
+  }
+}
+
+function saveTask() {
+  localStorage.setItem("taskItems", JSON.stringify(taskItems));
+}
+
+
+
+window.onload = function () {
+  displayProj();
+  displayList();
+  displayTask();
+};
