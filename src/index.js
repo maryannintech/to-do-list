@@ -6,6 +6,7 @@ const projCancel = document.querySelector(".proj-cancel");
 projCancel.addEventListener("click", () => {
   projForm.classList.add("hide");
   addProjBtn.classList.remove("hide");
+  projForm.reset();
 });
 const addProjBtn = document.querySelector(".addproj");
 addProjBtn.addEventListener("click", () => {
@@ -68,6 +69,7 @@ const addListBtn = document.querySelector(".addlist");
 addListBtn.addEventListener("click", () => {
   listForm.classList.remove("hide");
   addListBtn.classList.add("hide");
+  listForm.reset();
 });
 
 let listItems = [];
