@@ -136,6 +136,7 @@ function submitTask(event) {
   const taskName = document.querySelector("#task-title");
   const taskDetails = document.querySelector("#details");
   const taskDueDate = document.querySelector("#dueDate");
+  const prioQuestion = document.querySelector("#priority")
   const task = taskName.value.trim();
   const taskDate = taskDueDate.value.trim();
   addNewTask(task);
@@ -155,10 +156,32 @@ function displayTask() {
   const taskUL = document.querySelector(".all-tasks-ul");
   for (const item of taskItems) {
     const taskName = document.createElement("li");
+    taskName.className = "task-content";
+    const taskElements = document.createElement("div");
+    taskElements.className = "task"
     const taskIcon = document.createElement("i");
     taskIcon.className = "bx bx-task-x";
-    taskName.appendChild(taskIcon);
-    taskName.appendChild(document.createTextNode(item));
+    taskElements.appendChild(taskIcon);
+    taskElements.appendChild(document.createTextNode(item));
+
+    const taskRightContent = document.createElement("div");
+    taskRightContent.className = "right"
+    const deleteTask = document.createElement("i");
+    deleteTask.className = "bx bxs-trash";
+    const editTask = document.createElement("i");
+    editTask.className = "bx bx-edit-al";
+    taskRightContent.append(deleteTask, editTask);
+    taskRightContent.appendChild(document.createTextNode(item));
+
+    const taskDetail = document.createElement("div");
+    taskDetail.className = "task-detail";
+    const arrowDetailIcon = document.createElement("i");
+    arrowDetailIcon.className = "bx bxs-right-arrow";
+    taskDetail.appendChild(taskDetail);
+    taskDetail.appendChild(document.createTextNode(item));
+
+    taskName.append(taskElements, taskDetail)
+
     taskUL.appendChild(taskName);
   }
 }
