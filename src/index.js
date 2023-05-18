@@ -138,9 +138,9 @@ function submitTask(event) {
   const taskDueDate = document.querySelector("#dueDate");
   const prioQuestion = document.querySelector("#priority");
   const task = {
-    name: taskName.value.trim(),
-    dueDate: taskDueDate.value.trim(),
-    details: taskDetails.value.trim(),
+    name: taskName.value,
+    dueDate: taskDueDate.value,
+    details: taskDetails.value,
     priority: prioQuestion.checked,
   };
   addNewTask(task);
@@ -158,34 +158,54 @@ function addNewTask(task) {
 
 function displayTask() {
   const taskUL = document.querySelector(".all-tasks-ul");
+  taskUL.innerHTML = "";
   for (const task of taskItems) {
     const taskName = document.createElement("li");
     taskName.className = "task-content";
+
     const taskElements = document.createElement("div");
     taskElements.className = "task";
+
+    // task name
+    const nameTask = document.createElement("div");
+    nameTask.className = "name";
     const taskIcon = document.createElement("i");
     taskIcon.className = "bx bx-task-x";
-    taskElements.appendChild(taskIcon);
-    taskElements.appendChild(document.createTextNode(task.name));
+    nameTask.appendChild(taskIcon);
+    nameTask.appendChild(document.createTextNode(task.name));
 
+    // task duedate
     const taskRightContent = document.createElement("div");
     taskRightContent.className = "right";
     const deleteTask = document.createElement("i");
     deleteTask.className = "bx bxs-trash";
     const editTask = document.createElement("i");
-    editTask.className = "bx bx-edit-al";
-    const taskDueDate = document.createElement("p");
-    taskDueDate.textContent = `${task.dueDate}`;
+    editTask.className = "bx bx-edit-alt";
+    taskRightContent.appendChild(document.createTextNode(task.dueDate));
     taskRightContent.append(deleteTask, editTask);
 
+    taskElements.append(nameTask, taskRightContent);
+
+    // task details
     const taskDetail = document.createElement("div");
-    taskDetail.className = "task-detail";
+    taskDetail.className = "detail-content";
+
+    const detailsContent = document.createElement("p");
+    detailsContent.className = "task-details";
     const arrowDetailIcon = document.createElement("i");
     arrowDetailIcon.className = "bx bxs-right-arrow";
-    const taskDetails = document.createElement("p");
-    taskDetails.className = "task-details";
-    taskDetails.appendChild(arrowDetailIcon);
-    taskDetail.appendChild(document.createTextNode(task.details));
+    detailsContent.appendChild(arrowDetailIcon);
+    detailsContent.appendChild(document.createTextNode(task.details));
+
+    taskDetail.appendChild(detailsContent);
+
+    // check if task is priority
+    if (task.priority) {
+      taskName.classList.add("prio");
+    }
+    else {
+
+    }
 
     taskName.append(taskElements, taskDetail);
 

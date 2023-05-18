@@ -30,7 +30,13 @@
           </button>
           <form class="proj-form hide">
             <label for="proj-name">Project name:</label
-            ><input type="text" id="proj-name" name="p-name" required placeholder="enter project name"/>
+            ><input
+              type="text"
+              id="proj-name"
+              name="p-name"
+              required
+              placeholder="enter project name"
+            />
             <div class="form-buttons">
               <button type="submit" class="proj-add">Add</button>
               <button type="button" class="proj-cancel">Cancel</button>
@@ -51,7 +57,13 @@
           </button>
           <form class="list-form hide" action="" method="post">
             <label for="list-name">List name:</label
-            ><input type="text" id="list-name" name="l-name" required placeholder="enter list name"/>
+            ><input
+              type="text"
+              id="list-name"
+              name="l-name"
+              required
+              placeholder="enter list name"
+            />
             <div class="form-buttons">
               <button type="submit" class="list-add">Add</button>
               <button type="button" class="list-cancel">Cancel</button>
@@ -71,11 +83,16 @@
         <hr />
         <button type="button" class="addtask button-center">
           <i class="bx bx-pencil"></i> Add task
-          <hr />
         </button>
         <form action="" method="post" class="task-form hide">
           <label for="task-title">Title: </label
-          ><input type="text" name="title" id="task-title" required placeholder="title of task" />
+          ><input
+            type="text"
+            name="title"
+            id="task-title"
+            required
+            placeholder="title of task"
+          />
           <label for="details">Description/Notes/Details: </label
           ><input
             type="text"
@@ -87,14 +104,12 @@
           />
           <label for="dueDate">Due date: </label
           ><input type="date" name="dueDate" id="dueDate" required />
-          <label for="priority"
-            >Check the box if the task is a priority </label
+          <label for="priority">Check the box if the task is a priority </label
           ><input
             type="checkbox"
             name="priority"
             id="priority"
             value="yes"
-            required
           />
           <div class="form-buttons">
             <button type="submit" class="button-center task-add">
@@ -116,8 +131,11 @@
                 <i class="bx bxs-trash"></i> <i class="bx bx-edit-alt"></i>
               </div>
             </div>
-            <div class="task-detail">
-              <p class="task-details"><i class='bx bxs-right-arrow' ></i>after finishing the layout, pass it to the team manager.</p>
+            <div class="detailContent">
+              <p class="task-details">
+                <i class="bx bxs-right-arrow"></i>after finishing the layout,
+                pass it to the team manager.
+              </p>
             </div>
           </li>
         </ul>
