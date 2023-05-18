@@ -14,6 +14,12 @@ addProjBtn.addEventListener("click", () => {
   addProjBtn.classList.add("hide");
 });
 
+const allTasksProj = document.querySelector(".proj-tasks");
+const allTaskProjBtn = document.querySelector(".task-proj");
+allTaskProjBtn.addEventListener("click", () => {
+  allTasksProj.classList.remove("hide");
+})
+
 // app logic
 
 // proj
@@ -71,6 +77,11 @@ addListBtn.addEventListener("click", () => {
   addListBtn.classList.add("hide");
   listForm.reset();
 });
+const allListTaskBtn = document.querySelector(".task-list");
+const allListsTask = document.querySelector(".list-tasks");
+allListTaskBtn.addEventListener("click", () => {
+  allListsTask.classList.remove("hide");
+})
 
 let listItems = [];
 if (localStorage.getItem("listItems")) {
@@ -112,6 +123,8 @@ function saveList() {
 }
 
 // tasks
+
+let type = ""; // check if the tasks is for the proj or list
 
 const taskForm = document.querySelector(".task-form");
 taskForm.addEventListener("submit", submitTask);
@@ -159,7 +172,6 @@ function addNewTask(task) {
 
 function displayTask() {
   const taskUL = document.querySelector(".all-tasks-ul");
-  taskUL.innerHTML = "";
   for (const task of taskItems) {
     const taskName = document.createElement("li");
     taskName.className = "task-content";
@@ -208,7 +220,12 @@ function displayTask() {
 
     taskName.append(taskElements, taskDetail);
 
-    taskUL.appendChild(taskName);
+    if (type === "proj") {
+      allTasksProj.appendChild(taskName);
+    }
+    else if (type === "list" ) {
+      allListsTask.appendChild(taskName);
+    }
   }
 }
 

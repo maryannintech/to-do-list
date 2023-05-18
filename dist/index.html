@@ -105,12 +105,7 @@
           <label for="dueDate">Due date: </label
           ><input type="date" name="dueDate" id="dueDate" required />
           <label for="priority">Check the box if the task is a priority </label
-          ><input
-            type="checkbox"
-            name="priority"
-            id="priority"
-            value="yes"
-          />
+          ><input type="checkbox" name="priority" id="priority" value="yes" />
           <div class="form-buttons">
             <button type="submit" class="button-center task-add">
               Add task
@@ -121,23 +116,8 @@
           </div>
         </form>
         <ul class="all-tasks-ul">
-          <li class="task-content">
-            <div class="task">
-              <div class="name">
-                <i class="bx bx-task-x"></i> finish app layout
-              </div>
-              <div class="right">
-                <p>1/1/2023</p>
-                <i class="bx bxs-trash"></i> <i class="bx bx-edit-alt"></i>
-              </div>
-            </div>
-            <div class="detailContent">
-              <p class="task-details">
-                <i class="bx bxs-right-arrow"></i>after finishing the layout,
-                pass it to the team manager.
-              </p>
-            </div>
-          </li>
+          <div class="proj-tasks hide"><li>all proj tasks!</li></div>
+          <div class="list-tasks hide"><li>all lists tasks</li></div>
         </ul>
       </div>
     </main>
