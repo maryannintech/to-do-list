@@ -107,6 +107,7 @@ h2 {
 
 .bx {
   color: var(--accent);
+  cursor: pointer;
 }
 
 .main-list {
@@ -146,6 +147,8 @@ input {
   display: block;
   text-align: center;
   margin: 4px 0;
+  border-radius: 15px;
+  border: none;
 }
 
 .form-buttons {
@@ -163,8 +166,26 @@ form > button {
 }
 
 .bxs-folder,
-.bx-task-x {
+.bx-task-x,
+.bxs-right-arrow {
   margin-right: 5px;
+}
+
+.bx-task-x:hover {
+  color: darkgreen;
+}
+
+.bxs-trash,
+.bx-edit-alt {
+  margin-left: 10px;
+}
+
+.bxs-trash:hover {
+  color: darkred;
+}
+
+.done-task {
+  text-decoration: line-through;
 }
 
 .hide {
@@ -173,4 +194,39 @@ form > button {
 
 .show {
   display: block;
+}
+
+.task-content {
+  padding: 5px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.task-details {
+  font-size: 1rem;
+  padding-top: 5px;
+}
+
+p {
+  margin: 0;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+li {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.prio {
+  background-color: var(--primary-color);
+  border-radius: 15px;
 }

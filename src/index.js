@@ -134,6 +134,8 @@ if (localStorage.getItem("taskItems")) {
 function submitTask(event) {
   event.preventDefault();
   const taskName = document.querySelector("#task-title");
+  const taskDetails = document.querySelector("#details");
+  const taskDueDate = document.querySelector("#dueDate");
   const task = taskName.value.trim();
   addNewTask(task);
 
@@ -150,9 +152,8 @@ function addNewTask(task) {
 
 function displayTask() {
   const taskUL = document.querySelector(".all-tasks-ul");
-  taskUL.innerHTML = "";
   for (const item of taskItems) {
-    const taskName = document.createElement("button");
+    const taskName = document.createElement("li");
     const taskIcon = document.createElement("i");
     taskIcon.className = "bx bx-task-x";
     taskName.appendChild(taskIcon);
@@ -164,8 +165,6 @@ function displayTask() {
 function saveTask() {
   localStorage.setItem("taskItems", JSON.stringify(taskItems));
 }
-
-
 
 window.onload = function () {
   displayProj();

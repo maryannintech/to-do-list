@@ -72,11 +72,18 @@
         <button type="button" class="addtask button-center">
           <i class="bx bx-pencil"></i> Add task
         </button>
+        <hr />
         <form action="" method="post" class="task-form hide">
           <label for="task-title">Title: </label
           ><input type="text" name="title" id="task-title" required />
-          <label for="describe">Description: </label
-          ><input type="text" name="description" id="describe" />
+          <label for="details">Description/Notes/Details: </label
+          ><input
+            type="text"
+            name="details"
+            id="details"
+            placeholder="limited to 50 characters only"
+            maxlength="50"
+          />
           <label for="dueDate">Due date: </label
           ><input type="date" name="dueDate" id="dueDate" required />
           <label for="priority"
@@ -97,7 +104,22 @@
             </button>
           </div>
         </form>
-        <ul class="all-tasks-ul"></ul>
+        <ul class="all-tasks-ul">
+          <li class="task-content">
+            <div class="task">
+              <div class="name">
+                <i class="bx bx-task-x"></i> finish app layout
+              </div>
+              <div class="right">
+                <p>1/1/2023</p>
+                <i class="bx bxs-trash"></i> <i class="bx bx-edit-alt"></i>
+              </div>
+            </div>
+            <div class="task-detail">
+              <p class="task-details"><i class='bx bxs-right-arrow' ></i>after finishing the layout, pass it to the team manager.</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </main>
   </body>
