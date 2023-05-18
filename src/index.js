@@ -171,6 +171,9 @@ function displayTask() {
     nameTask.className = "name";
     const taskIcon = document.createElement("i");
     taskIcon.className = "bx bx-task-x";
+    taskIcon.addEventListener("click", () => {
+      taskFinish(nameTask, taskDetail, taskIcon);
+    });
     nameTask.appendChild(taskIcon);
     nameTask.appendChild(document.createTextNode(task.name));
 
@@ -216,6 +219,14 @@ function displayTask() {
 function deleteTask(task) {
   const index = taskItems.indexOf(task);
   
+}
+
+function taskFinish(taskname, taskdetail, icon) {
+  taskname.classList.add("done-task");
+  taskdetail.classList.add("done-task");
+  icon.classList.remove("bx-task-x");
+  icon.classList.remove("bx");
+  icon.className = "bx bx-task";
 }
 
 function saveTask() {

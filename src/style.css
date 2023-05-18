@@ -167,7 +167,8 @@ form > button {
 
 .bxs-folder,
 .bx-task-x,
-.bxs-right-arrow {
+.bxs-right-arrow,
+.bx-task {
   margin-right: 5px;
 }
 
