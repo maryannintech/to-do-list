@@ -6,11 +6,11 @@
 }
 
 :root {
-  --bg-color: #020302;
-  --text-color: #fcfdfc;
-  --primary-btn: #c7d996;
-  --secondary-btn: #f6e5f1;
-  --accent: #65adc8;
+  --bg-color: #e6e5e5;
+  --text-color: #0a0a0a;
+  --primary-color: #88bdc3;
+  --secondary-color: #ffffff;
+  --accent: #994d91;
 }
 
 body {
@@ -31,7 +31,7 @@ header > p {
 }
 
 .title {
-  background: linear-gradient(to right, #c7d996, #65adc8);
+  background: linear-gradient(to right, #88bdc3, #994d91);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: flex;
@@ -68,7 +68,7 @@ main {
 .projects,
 .lists {
   border-radius: 15px;
-  border: 2px solid var(--secondary-btn);
+  border: 2px solid var(--accent);
   padding: 5px 10px;
   overflow-y: auto;
   height: 100%;
@@ -101,7 +101,7 @@ h2 {
 
 .main-list {
   flex: 3;
-  border: 2px solid var(--secondary-btn);
+  border: 2px solid var(--primary-color);
   border-radius: 15px;
   padding: 5px 10px;
   height: 100%;
@@ -118,7 +118,7 @@ h2 {
 }
 
 form {
-  background-color: var(--primary-btn);
+  background-color: var(--accent);
   padding: 10px;
   width: fit-content;
   border-radius: 15px;
@@ -129,7 +129,7 @@ form {
 }
 
 button:hover {
-  background-color: #303030;
+  background-color: #d3d3d3;
 }
 
 input {

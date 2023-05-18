@@ -13,18 +13,6 @@ addProjBtn.addEventListener("click", () => {
   addProjBtn.classList.add("hide");
 });
 
-const taskForm = document.querySelector(".task-form");
-const addTaskBtn = document.querySelector(".addtask");
-addTaskBtn.addEventListener("click", () => {
-  taskForm.classList.remove("hide");
-  addTaskBtn.classList.add("hide");
-});
-const taskCancel = document.querySelector(".task-cancel");
-taskCancel.addEventListener("click", () => {
-  taskForm.classList.add("hide");
-  addTaskBtn.classList.remove("hide");
-});
-
 // app logic
 
 // proj
@@ -125,3 +113,17 @@ window.onload = function () {
   displayProj();
   displayList();
 };
+
+// tasks
+const taskForm = document.querySelector(".task-form");
+const addTaskBtn = document.querySelector(".addtask");
+addTaskBtn.addEventListener("click", () => {
+  taskForm.classList.remove("hide");
+  addTaskBtn.classList.add("hide");
+});
+const taskCancel = document.querySelector(".task-cancel");
+taskCancel.addEventListener("click", () => {
+  taskForm.classList.add("hide");
+  addTaskBtn.classList.remove("hide");
+  taskForm.reset();
+});
