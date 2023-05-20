@@ -188,7 +188,6 @@ function addNewTask(task) {
 function displayTask() {
   allListsTask.innerHTML = "";
   allTasksProj.innerHTML = "";
-  allTaskUL.innerHTML = "";
   for (const task of taskItems) {
     const taskName = document.createElement("li");
     taskName.className = "task-content";
@@ -237,12 +236,20 @@ function displayTask() {
 
     taskName.append(taskElements, taskDetail);
 
+    // check what category the task is
+    categorizeTask(taskName, task);
+  }
+
+  function categorizeTask(element, task) {
+    allTaskUL.innerHTML = "";
     if (task.category === "proj") {
-      allTaskUL.appendChild(taskName);
-      allTasksProj.appendChild(taskName);
+      const taskNameForProj = element.cloneNode(true);
+      allTasksProj.appendChild(taskNameForProj);
+      allTaskUL.appendChild(element);
     } else if (task.category === "list") {
-      allTaskUL.appendChild(taskName);
-      allListsTask.appendChild(taskName);
+      const taskNameForList = element.cloneNode(true);
+      allListsTask.appendChild(taskNameForList);
+      allTaskUL.appendChild(element);
     }
   }
 }
