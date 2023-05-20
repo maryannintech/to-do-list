@@ -18,8 +18,9 @@ const allTasksProj = document.querySelector(".proj-tasks");
 const allTaskProjBtn = document.querySelector(".task-proj");
 allTaskProjBtn.addEventListener("click", () => {
   allTasksProj.classList.remove("hide");
-  taskCategory.textContent = "Things to do: Project"
+  taskCategory.textContent = "Things to do: Project";
   allListsTask.classList.add("hide");
+  allTaskUL.classList.add("hide");
 });
 
 // app logic
@@ -83,8 +84,9 @@ const allListTaskBtn = document.querySelector(".task-list");
 const allListsTask = document.querySelector(".list-tasks");
 allListTaskBtn.addEventListener("click", () => {
   allListsTask.classList.remove("hide");
-  taskCategory.textContent = "Things to do: List"
+  taskCategory.textContent = "Things to do: List";
   allTasksProj.classList.add("hide");
+  allTaskUL.classList.add("hide");
 });
 
 let listItems = [];
@@ -142,6 +144,14 @@ taskCancel.addEventListener("click", () => {
   addTaskBtn.classList.remove("hide");
   taskForm.reset();
 });
+const viewAllTaskBtn = document.querySelector(".all-task-btn");
+viewAllTaskBtn.addEventListener("click", () => {
+  allTaskUL.classList.remove("hide");
+  allListsTask.classList.add("hide");
+  allListsTask.classList.add("hide");
+  taskCategory.textContent = "Things to do: All";
+});
+const allTaskUL = document.querySelector(".all-tasks");
 
 let taskItems = [];
 if (localStorage.getItem("taskItems")) {
@@ -160,7 +170,7 @@ function submitTask(event) {
     dueDate: taskDueDate.value,
     details: taskDetails.value,
     priority: prioQuestion.checked,
-    category: categoryTask.value
+    category: categoryTask.value,
   };
   addNewTask(task);
 
@@ -178,6 +188,7 @@ function addNewTask(task) {
 function displayTask() {
   allListsTask.innerHTML = "";
   allTasksProj.innerHTML = "";
+  allTaskUL.innerHTML = "";
   for (const task of taskItems) {
     const taskName = document.createElement("li");
     taskName.className = "task-content";
@@ -227,8 +238,10 @@ function displayTask() {
     taskName.append(taskElements, taskDetail);
 
     if (task.category === "proj") {
+      allTaskUL.appendChild(taskName);
       allTasksProj.appendChild(taskName);
     } else if (task.category === "list") {
+      allTaskUL.appendChild(taskName);
       allListsTask.appendChild(taskName);
     }
   }
