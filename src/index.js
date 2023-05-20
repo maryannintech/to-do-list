@@ -18,7 +18,9 @@ const allTasksProj = document.querySelector(".proj-tasks");
 const allTaskProjBtn = document.querySelector(".task-proj");
 allTaskProjBtn.addEventListener("click", () => {
   allTasksProj.classList.remove("hide");
-})
+  taskCategory.textContent = "Things to do: Project"
+  allListsTask.classList.add("hide");
+});
 
 // app logic
 
@@ -81,7 +83,9 @@ const allListTaskBtn = document.querySelector(".task-list");
 const allListsTask = document.querySelector(".list-tasks");
 allListTaskBtn.addEventListener("click", () => {
   allListsTask.classList.remove("hide");
-})
+  taskCategory.textContent = "Things to do: List"
+  allTasksProj.classList.add("hide");
+});
 
 let listItems = [];
 if (localStorage.getItem("listItems")) {
@@ -123,6 +127,8 @@ function saveList() {
 }
 
 // tasks
+
+const taskCategory = document.querySelector(".task-h2");
 const taskForm = document.querySelector(".task-form");
 taskForm.addEventListener("submit", submitTask);
 const addTaskBtn = document.querySelector(".addtask");
@@ -170,8 +176,8 @@ function addNewTask(task) {
 }
 
 function displayTask() {
-  const taskUL = document.querySelector(".all-tasks-ul");
-  taskUL.innerHTML = ""
+  allListsTask.innerHTML = "";
+  allTasksProj.innerHTML = "";
   for (const task of taskItems) {
     const taskName = document.createElement("li");
     taskName.className = "task-content";
@@ -222,14 +228,11 @@ function displayTask() {
 
     if (task.category === "proj") {
       allTasksProj.appendChild(taskName);
-    }
-    else if (task.category === "list") {
+    } else if (task.category === "list") {
       allListsTask.appendChild(taskName);
     }
   }
 }
-
-
 
 function saveTask() {
   localStorage.setItem("taskItems", JSON.stringify(taskItems));
