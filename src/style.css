@@ -20,7 +20,14 @@
   color: var(--bg-text-color-dark);
 }
 
+.dark-mode-btn {
+  background-color: var(--bg-color-dark);
+  color: var(--bg-text-color-dark);
+}
 
+.dark-mode-btn:hover {
+  background-color: #312f13;
+}
 
 body {
   margin: 0;
