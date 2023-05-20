@@ -15,13 +15,12 @@
   --bg-text-color-dark: #f5f3e0;
 }
 
-.dark-mode-bg {
+.dark-mode {
   background-color: var(--bg-color-dark);
-}
-
-.dark-mode-text {
   color: var(--bg-text-color-dark);
 }
+
+
 
 body {
   margin: 0;

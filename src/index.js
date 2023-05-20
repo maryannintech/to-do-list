@@ -1,5 +1,8 @@
 import "./style.css";
 
+
+const modeToggle = document.querySelector(".toggle");
+
 const projForm = document.querySelector(".proj-form");
 projForm.addEventListener("submit", submitProj);
 const projCancel = document.querySelector(".proj-cancel");
@@ -24,6 +27,10 @@ allTaskProjBtn.addEventListener("click", () => {
 });
 
 // app logic
+
+function toggleButton() {
+
+}
 
 // proj
 let projList = [];
