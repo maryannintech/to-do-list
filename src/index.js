@@ -188,6 +188,7 @@ function addNewTask(task) {
 function displayTask() {
   allListsTask.innerHTML = "";
   allTasksProj.innerHTML = "";
+  allTaskUL.innerHTML = "";
   for (const task of taskItems) {
     const taskName = document.createElement("li");
     taskName.className = "task-content";
@@ -250,7 +251,7 @@ function displayTask() {
 }
 
 /* function categorizeTask(element, task) {
-    allTaskUL.innerHTML = "";
+    
     if (task.category === "proj") {
       const taskNameForProj = element.cloneNode(true);
       allTasksProj.appendChild(taskNameForProj);
