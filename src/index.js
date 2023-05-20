@@ -148,7 +148,7 @@ const viewAllTaskBtn = document.querySelector(".all-task-btn");
 viewAllTaskBtn.addEventListener("click", () => {
   allTaskUL.classList.remove("hide");
   allListsTask.classList.add("hide");
-  allListsTask.classList.add("hide");
+  allTasksProj.classList.add("hide");
   taskCategory.textContent = "Things to do: All";
 });
 const allTaskUL = document.querySelector(".all-tasks");
@@ -237,10 +237,19 @@ function displayTask() {
     taskName.append(taskElements, taskDetail);
 
     // check what category the task is
-    categorizeTask(taskName, task);
+    if (task.category === "proj") {
+      const taskNameForProj = taskName.cloneNode(true);
+      allTasksProj.appendChild(taskNameForProj);
+      allTaskUL.appendChild(taskName);
+    } else if (task.category === "list") {
+      const taskNameForList = taskName.cloneNode(true);
+      allListsTask.appendChild(taskNameForList);
+      allTaskUL.appendChild(taskName);
+    }
   }
+}
 
-  function categorizeTask(element, task) {
+/* function categorizeTask(element, task) {
     allTaskUL.innerHTML = "";
     if (task.category === "proj") {
       const taskNameForProj = element.cloneNode(true);
@@ -253,6 +262,8 @@ function displayTask() {
     }
   }
 }
+
+*/
 
 function saveTask() {
   localStorage.setItem("taskItems", JSON.stringify(taskItems));
