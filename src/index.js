@@ -123,9 +123,6 @@ function saveList() {
 }
 
 // tasks
-
-let type = ""; // check if the tasks is for the proj or list
-
 const taskForm = document.querySelector(".task-form");
 taskForm.addEventListener("submit", submitTask);
 const addTaskBtn = document.querySelector(".addtask");
@@ -151,11 +148,13 @@ function submitTask(event) {
   const taskDetails = document.querySelector("#details");
   const taskDueDate = document.querySelector("#dueDate");
   const prioQuestion = document.querySelector("#priority");
+  const categoryTask = document.querySelector("#type");
   const task = {
     name: taskName.value,
     dueDate: taskDueDate.value,
     details: taskDetails.value,
     priority: prioQuestion.checked,
+    category: categoryTask.value
   };
   addNewTask(task);
 
@@ -172,6 +171,7 @@ function addNewTask(task) {
 
 function displayTask() {
   const taskUL = document.querySelector(".all-tasks-ul");
+  taskUL.innerHTML = ""
   for (const task of taskItems) {
     const taskName = document.createElement("li");
     taskName.className = "task-content";
@@ -220,14 +220,15 @@ function displayTask() {
 
     taskName.append(taskElements, taskDetail);
 
-    if (type === "proj") {
+    if (task.category === "proj") {
       allTasksProj.appendChild(taskName);
     }
-    else if (type === "list" ) {
+    else if (task.category === "list") {
       allListsTask.appendChild(taskName);
     }
   }
 }
+
 
 
 function saveTask() {
