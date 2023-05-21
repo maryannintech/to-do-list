@@ -13,6 +13,8 @@ modeToggle.addEventListener("click", () => {
 
 // app logic
 
+let folderClicked = "";
+
 // proj
 const projForm = document.querySelector(".proj-form");
 projForm.addEventListener("submit", submitProj);
@@ -66,6 +68,7 @@ function displayProj() {
     const projItems = document.createElement("button");
     projItems.addEventListener("click", () => {
       taskCategory.textContent = `Things to do: ${proj}`;
+      folderClicked = proj;
     })
     const folderIcon = document.createElement("i");
     folderIcon.className = "bx bxs-folder";
@@ -133,6 +136,7 @@ function displayList() {
     const listName = document.createElement("button");
     listName.addEventListener("click", () => {
       taskCategory.textContent = `Things to do: ${item}`;
+      folderClicked = item;
     })
     const folderIcon = document.createElement("i");
     folderIcon.className = "bx bxs-folder";
@@ -147,6 +151,7 @@ function saveList() {
   localStorage.setItem("listItems", JSON.stringify(listItems));
 }
 
+console.log(folderClicked);
 // tasks
 
 const taskCategory = document.querySelector(".task-h2");
