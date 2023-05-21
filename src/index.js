@@ -11,6 +11,9 @@ modeToggle.addEventListener("click", () => {
   headerTagline.classList.toggle("dark-mode");
 });
 
+// app logic
+
+// proj
 const projForm = document.querySelector(".proj-form");
 projForm.addEventListener("submit", submitProj);
 const projCancel = document.querySelector(".proj-cancel");
@@ -34,11 +37,6 @@ allTaskProjBtn.addEventListener("click", () => {
   allTaskUL.classList.add("hide");
 });
 
-// app logic
-
-function toggleButton() {}
-
-// proj
 let projList = [];
 if (localStorage.getItem("projList")) {
   projList = JSON.parse(localStorage.getItem("projList"));
