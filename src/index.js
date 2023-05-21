@@ -69,7 +69,7 @@ function displayProj() {
     projItems.addEventListener("click", () => {
       taskCategory.textContent = `Things to do: ${proj}`;
       folderClicked = proj;
-    })
+    });
     const folderIcon = document.createElement("i");
     folderIcon.className = "bx bxs-folder";
     projItems.appendChild(folderIcon);
@@ -137,7 +137,7 @@ function displayList() {
     listName.addEventListener("click", () => {
       taskCategory.textContent = `Things to do: ${item}`;
       folderClicked = item;
-    })
+    });
     const folderIcon = document.createElement("i");
     folderIcon.className = "bx bxs-folder";
     listName.appendChild(folderIcon);
@@ -207,7 +207,6 @@ function addNewTask(task) {
   taskItems.push({ ...task, folder: folderClicked });
   displayTask();
   saveTask();
-  addTaskToFolder(task, folderClicked);
 }
 
 function displayTask() {
@@ -283,10 +282,11 @@ function makeUL(folder) {
 }
 
 function addTaskToFolder(task, folder) {
-  const folderTaskContainer =  document.querySelector(`.${folder}-ul`);
-  // append task to the clicked folder
+  const folderTaskContainer = document.querySelector(`.${folder}-ul`);
+  if (folderTaskContainer) {
+    folderTaskContainer.appendChild(task);
+  }
 }
-
 
 function saveTask() {
   localStorage.setItem("taskItems", JSON.stringify(taskItems));
