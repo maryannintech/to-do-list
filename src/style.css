@@ -25,6 +25,10 @@
   color: var(--bg-text-color-dark);
 }
 
+.dark-mode-task {
+  color: var(--text-color);
+}
+
 .dark-mode-btn:hover {
   background-color: #312f13;
 }
