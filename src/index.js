@@ -76,13 +76,6 @@ function displayProj() {
   }
 }
 
-function makeUL(folder) {
-  const mainTaskDIV = document.querySelector(".main-list");
-  const folderUL = document.createElement("ul");
-  folderUL.className = `${folder}-ul`;
-  mainTaskDIV.appendChild(folderUL);
-}
-
 function saveProj() {
   localStorage.setItem("projList", JSON.stringify(projList));
 }
@@ -146,6 +139,7 @@ function displayList() {
     listName.appendChild(folderIcon);
     listName.appendChild(document.createTextNode(item));
     listUL.appendChild(listName);
+    makeUL(item);
   }
 }
 
@@ -275,21 +269,13 @@ function displayTask() {
   }
 }
 
-/* function categorizeTask(element, task) {
-    
-    if (task.category === "proj") {
-      const taskNameForProj = element.cloneNode(true);
-      allTasksProj.appendChild(taskNameForProj);
-      allTaskUL.appendChild(element);
-    } else if (task.category === "list") {
-      const taskNameForList = element.cloneNode(true);
-      allListsTask.appendChild(taskNameForList);
-      allTaskUL.appendChild(element);
-    }
-  }
+function makeUL(folder) {
+  const mainTaskDIV = document.querySelector(".main-list");
+  const folderUL = document.createElement("ul");
+  folderUL.className = `${folder}-ul`;
+  mainTaskDIV.appendChild(folderUL);
 }
 
-*/
 
 function saveTask() {
   localStorage.setItem("taskItems", JSON.stringify(taskItems));
