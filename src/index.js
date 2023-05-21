@@ -64,12 +64,23 @@ function displayProj() {
   projUL.innerHTML = "";
   for (const proj of projList) {
     const projItems = document.createElement("button");
+    projItems.addEventListener("click", () => {
+      taskCategory.textContent = `Things to do: ${proj}`;
+    })
     const folderIcon = document.createElement("i");
     folderIcon.className = "bx bxs-folder";
     projItems.appendChild(folderIcon);
     projItems.appendChild(document.createTextNode(proj));
     projUL.appendChild(projItems);
+    makeUL(proj);
   }
+}
+
+function makeUL(folder) {
+  const mainTaskDIV = document.querySelector(".main-list");
+  const folderUL = document.createElement("ul");
+  folderUL.className = `${folder}-ul`;
+  mainTaskDIV.appendChild(folderUL);
 }
 
 function saveProj() {
@@ -127,6 +138,9 @@ function displayList() {
   listUL.innerHTML = "";
   for (const item of listItems) {
     const listName = document.createElement("button");
+    listName.addEventListener("click", () => {
+      taskCategory.textContent = `Things to do: ${item}`;
+    })
     const folderIcon = document.createElement("i");
     folderIcon.className = "bx bxs-folder";
     listName.appendChild(folderIcon);
