@@ -13,7 +13,7 @@ modeToggle.addEventListener("click", () => {
 
 // app logic
 
-let folderClicked = "";
+let folderClicked = null;
 
 // proj
 const projForm = document.querySelector(".proj-form");
@@ -204,9 +204,10 @@ function submitTask(event) {
 }
 
 function addNewTask(task) {
-  taskItems.push(task);
+  taskItems.push({ ...task, folder: folderClicked });
   displayTask();
   saveTask();
+  addTaskToFolder(task, folderClicked);
 }
 
 function displayTask() {
@@ -281,9 +282,9 @@ function makeUL(folder) {
   mainTaskDIV.appendChild(folderUL);
 }
 
-function addTask(task, folder) {
+function addTaskToFolder(task, folder) {
   const folderTaskContainer =  document.querySelector(`.${folder}-ul`);
-  // append task to
+  // append task to the clicked folder
 }
 
 
