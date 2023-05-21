@@ -109,6 +109,14 @@ main {
   margin-bottom: 5px;
 }
 
+.projects > ul > button {
+  margin-bottom: 5px;
+}
+
+.lists > ul > button {
+  margin-bottom: 5px;
+}
+
 .projects,
 .lists {
   border-radius: 15px;

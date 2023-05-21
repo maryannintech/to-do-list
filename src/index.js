@@ -276,6 +276,11 @@ function makeUL(folder) {
   mainTaskDIV.appendChild(folderUL);
 }
 
+function addTask(task, folder) {
+  const folderTaskContainer =  document.querySelector(`.${folder}-ul`);
+  // append task to
+}
+
 
 function saveTask() {
   localStorage.setItem("taskItems", JSON.stringify(taskItems));
