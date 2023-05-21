@@ -2,12 +2,13 @@ import "./style.css";
 
 // toggle function - leave this in here
 const modeToggle = document.querySelector(".toggle");
+const headerTagline = document.querySelector(".tagline");
 const bodyElement = document.querySelector("body");
 const mainElement = document.querySelector("main");
-const buttonElements = document.getElementsByTagName("button");
 modeToggle.addEventListener("click", () => {
   mainElement.classList.toggle("dark-mode");
   bodyElement.classList.toggle("dark-mode");
+  headerTagline.classList.toggle("dark-mode");
 });
 
 const projForm = document.querySelector(".proj-form");

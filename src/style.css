@@ -101,6 +101,14 @@ main {
   height: 100%;
 }
 
+.projects > button {
+  margin-bottom: 5px;
+}
+
+.lists > button {
+  margin-bottom: 5px;
+}
+
 .projects,
 .lists {
   border-radius: 15px;
@@ -240,6 +248,10 @@ form > button {
   padding-top: 5px;
 }
 
+.all-task-btn {
+  margin-top: 5px;
+}
+
 p:not(.mode) {
   margin: 0;
 }
@@ -258,3 +270,4 @@ li {
   background-color: var(--primary-color);
   border-radius: 15px;
 }
+
