@@ -66,22 +66,23 @@ function displayProj() {
   projUL.innerHTML = "";
   for (const proj of projList) {
     const projItems = document.createElement("button");
+    const folderName = proj.replace(/\s+/g, "");
     projItems.addEventListener("click", () => {
       taskCategory.textContent = `Things to do: ${proj}`;
-      folderClicked = proj;
+      folderClicked = folderName;
       allListsTask.classList.add("hide");
       allTaskUL.classList.add("hide");
       allTasksProj.classList.add("hide");
       console.log(folderClicked);
       hideAllTaskUL();
-      makeULVisible(proj);
+      makeULVisible(folderName);
     });
     const folderIcon = document.createElement("i");
     folderIcon.className = "bx bxs-folder";
     projItems.appendChild(folderIcon);
     projItems.appendChild(document.createTextNode(proj));
     projUL.appendChild(projItems);
-    makeUL(proj);
+    makeUL(folderName);
   }
 }
 
@@ -140,22 +141,23 @@ function displayList() {
   listUL.innerHTML = "";
   for (const item of listItems) {
     const listName = document.createElement("button");
+    const folderName = item.replace(/\s+/g, "");
     listName.addEventListener("click", () => {
       taskCategory.textContent = `Things to do: ${item}`;
-      folderClicked = item;
+      folderClicked = folderName;
       allListsTask.classList.add("hide");
       allTaskUL.classList.add("hide");
       allTasksProj.classList.add("hide");
       console.log(folderClicked);
       hideAllTaskUL();
-      makeULVisible(item);
+      makeULVisible(folderName);
     });
     const folderIcon = document.createElement("i");
     folderIcon.className = "bx bxs-folder";
     listName.appendChild(folderIcon);
     listName.appendChild(document.createTextNode(item));
     listUL.appendChild(listName);
-    makeUL(item);
+    makeUL(folderName);
   }
 }
 
