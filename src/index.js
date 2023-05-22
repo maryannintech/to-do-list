@@ -278,14 +278,14 @@ function displayTask() {
     if (task.category === "proj") {
       const taskNameForProj = taskName.cloneNode(true);
       allTasksProj.appendChild(taskNameForProj);
+      addTaskToFolder(taskName, task.folder);
       allTaskUL.appendChild(taskName);
     } else if (task.category === "list") {
       const taskNameForList = taskName.cloneNode(true);
       allListsTask.appendChild(taskNameForList);
+      addTaskToFolder(taskName, task.folder);
       allTaskUL.appendChild(taskName);
     }
-
-    addTaskToFolder(taskName, task.folder);
   }
 }
 
