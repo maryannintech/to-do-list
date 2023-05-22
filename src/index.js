@@ -334,4 +334,5 @@ window.onload = function () {
   displayList();
   displayTask();
   hideAllTaskUL();
+  allTaskUL.classList.remove("hide");
 };
