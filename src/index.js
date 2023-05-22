@@ -213,7 +213,6 @@ function submitTask(event) {
 function addNewTask(task) {
   taskItems.push({ ...task, folder: folderClicked });
   displayTask();
-  addTaskToFolder(task, folderClicked);
   saveTask();
 }
 
@@ -279,6 +278,8 @@ function displayTask() {
       allListsTask.appendChild(taskNameForList);
       allTaskUL.appendChild(taskName);
     }
+
+    addTaskToFolder(taskName, task.folder);
   }
 }
 
