@@ -278,14 +278,14 @@ function displayTask() {
     if (task.category === "proj") {
       const taskNameForProj = taskName.cloneNode(true);
       allTasksProj.appendChild(taskNameForProj);
-      addTaskToFolder(taskName, task.folder);
-      allTaskUL.appendChild(taskName);
+      addTaskToFolder(taskNameForProj, task.folder);
     } else if (task.category === "list") {
       const taskNameForList = taskName.cloneNode(true);
       allListsTask.appendChild(taskNameForList);
-      addTaskToFolder(taskName, task.folder);
-      allTaskUL.appendChild(taskName);
+      addTaskToFolder(taskNameForList, task.folder);
     }
+
+    allTaskUL.appendChild(taskName);
   }
 }
 
@@ -304,8 +304,8 @@ function addTaskToFolder(task, folder) {
 }
 
 function hideAllTaskUL() {
-  const allTaskULs = document.querySelectorAll(".main-list ul");
-  allTaskULs.forEach((ul) => {
+  const allULs = document.querySelectorAll(".main-list ul");
+  allULs.forEach((ul) => {
     ul.classList.add("hide");
   });
 }
