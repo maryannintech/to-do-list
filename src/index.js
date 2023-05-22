@@ -277,12 +277,14 @@ function displayTask() {
     // check what category the task is
     if (task.category === "proj") {
       const taskNameForProj = taskName.cloneNode(true);
+      const taskProjCopy = taskName.cloneNode(true);
+      addTaskToFolder(taskProjCopy, task.folder);
       allTasksProj.appendChild(taskNameForProj);
-      addTaskToFolder(taskNameForProj, task.folder);
     } else if (task.category === "list") {
       const taskNameForList = taskName.cloneNode(true);
+      const taskListCopy = taskName.cloneNode(true);
+      addTaskToFolder(taskListCopy, task.folder);
       allListsTask.appendChild(taskNameForList);
-      addTaskToFolder(taskNameForList, task.folder);
     }
 
     allTaskUL.appendChild(taskName);
