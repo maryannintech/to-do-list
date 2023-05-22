@@ -37,6 +37,8 @@ allTaskProjBtn.addEventListener("click", () => {
   taskCategory.textContent = "Things to do: Project";
   allListsTask.classList.add("hide");
   allTaskUL.classList.add("hide");
+  hideAllTaskUL();
+  allTasksProj.classList.remove("hide");
 });
 
 let projList = [];
@@ -112,6 +114,8 @@ allListTaskBtn.addEventListener("click", () => {
   taskCategory.textContent = "Things to do: List";
   allTasksProj.classList.add("hide");
   allTaskUL.classList.add("hide");
+  hideAllTaskUL();
+  allListsTask.classList.remove("hide");
 });
 
 let listItems = [];
