@@ -73,6 +73,8 @@ function displayProj() {
       allTaskUL.classList.add("hide");
       allTasksProj.classList.add("hide");
       console.log(folderClicked);
+      hideAllTaskUL();
+      makeULVisible(proj);
     });
     const folderIcon = document.createElement("i");
     folderIcon.className = "bx bxs-folder";
@@ -145,6 +147,8 @@ function displayList() {
       allTaskUL.classList.add("hide");
       allTasksProj.classList.add("hide");
       console.log(folderClicked);
+      hideAllTaskUL();
+      makeULVisible(item);
     });
     const folderIcon = document.createElement("i");
     folderIcon.className = "bx bxs-folder";
@@ -294,6 +298,20 @@ function addTaskToFolder(task, folder) {
   const folderTaskContainer = document.querySelector(`.${folder}-ul`);
   if (folderTaskContainer) {
     folderTaskContainer.appendChild(task);
+  }
+}
+
+function hideAllTaskUL() {
+  const allTaskULs = document.querySelectorAll(".main-list ul");
+  allTaskULs.forEach((ul) => {
+    ul.classList.add("hide");
+  });
+}
+
+function makeULVisible(folder) {
+  const folderUL = document.querySelector(`.${folder}-ul`);
+  if (folderUL) {
+    folderUL.classList.remove("hide");
   }
 }
 
