@@ -284,3 +284,10 @@ li {
   margin-bottom: 5px;
 }
 
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
