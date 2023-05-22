@@ -191,6 +191,8 @@ viewAllTaskBtn.addEventListener("click", () => {
   allListsTask.classList.add("hide");
   allTasksProj.classList.add("hide");
   taskCategory.textContent = "Things to do: All";
+  hideAllTaskUL();
+  allTaskUL.classList.remove("hide");
 });
 const allTaskUL = document.querySelector(".all-tasks");
 
@@ -331,4 +333,5 @@ window.onload = function () {
   displayProj();
   displayList();
   displayTask();
+  hideAllTaskUL();
 };
