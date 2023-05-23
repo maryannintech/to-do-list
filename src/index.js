@@ -1,3 +1,4 @@
+import { forEach } from "lodash";
 import "./style.css";
 
 // toggle function - leave this in here
@@ -256,9 +257,9 @@ function displayTask() {
     const deleteTask = document.createElement("i");
     deleteTask.className = "bx bxs-trash";
     deleteTask.addEventListener("click", () => {
-      let indexOfTask = taskItems.indexOf(task)
+      let indexOfTask = taskItems.indexOf(task);
       eraseTask(indexOfTask);
-    })
+    });
     const editTask = document.createElement("i");
     editTask.className = "bx bx-edit-alt";
     taskRightContent.appendChild(document.createTextNode(task.dueDate));
