@@ -213,13 +213,14 @@ form > button {
 }
 
 .bxs-folder,
-.bx-task-x,
+.bx-circle,
+.bxs-circle,
 .bxs-right-arrow,
 .bx-task {
   margin-right: 5px;
 }
 
-.bx-task-x:hover {
+.bx-circle:hover {
   color: darkgreen;
 }
 
