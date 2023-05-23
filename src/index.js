@@ -262,6 +262,9 @@ function displayTask() {
     });
     const editTask = document.createElement("i");
     editTask.className = "bx bx-edit-alt";
+    editTask.addEventListener("click", () => {
+      editTaskName(nameTask, task);
+    });
     taskRightContent.appendChild(document.createTextNode(task.dueDate));
     taskRightContent.append(deleteTask, editTask);
 
@@ -293,7 +296,16 @@ function displayTask() {
       const taskNameForProj = taskName.cloneNode(true);
       const taskProjCopy = taskName.cloneNode(true);
       addTaskToFolder(taskProjCopy, task.folder);
+
       allTasksProj.appendChild(taskNameForProj);
+
+
+      const allDeleteBtn = taskNameForProj.querySelectorAll(".bx.bxs-trash");
+      allDeleteBtn.forEach((button, index) => {
+        button.addEventListener("click", () => {
+          eraseTask(index);
+        });
+      });
     } else if (task.category === "list") {
       const taskNameForList = taskName.cloneNode(true);
       const taskListCopy = taskName.cloneNode(true);
@@ -301,10 +313,10 @@ function displayTask() {
       allListsTask.appendChild(taskNameForList);
     }
 
-    const allDeleteBtn = document.querySelectorAll(".bx.bxs-trash");
-    allDeleteBtn.forEach((button, index) => {
+    const allEditBtn = document.querySelectorAll(".bx.bx-edit-alt");
+    allEditBtn.forEach((button) => {
       button.addEventListener("click", () => {
-        eraseTask(index);
+        editTaskName(nameTask, task);
       });
     });
 
@@ -312,10 +324,37 @@ function displayTask() {
   }
 }
 
+function editTaskName(nameElement, task) {
+  // Create an input element for editing
+  const editInput = document.createElement("input");
+  editInput.type = "text";
+  editInput.value = task.name;
+
+  // Replace the name element with the input element
+  nameElement.replaceWith(editInput);
+
+  // Add a keydown event listener to the input element to capture the edited value
+  editInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      const editedName = editInput.value;
+      task.name = editedName;
+      saveTask();
+      displayTask();
+    }
+  });
+
+  // Focus on the input element to enable editing immediately
+  editInput.focus();
+}
+
 function eraseTask(taskIndex) {
   taskItems.splice(taskIndex, 1);
   saveTask();
   location.reload();
+}
+
+function addEvenetListenerClone(clone) {
+  
 }
 
 function makeUL(folder) {
