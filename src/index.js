@@ -55,6 +55,7 @@ function submitProj(event) {
   projForm.classList.add("hide");
   addProjBtn.classList.remove("hide");
   projForm.reset();
+  location.reload();
 }
 
 function addNewProj(proj) {
@@ -132,6 +133,7 @@ function submitList(event) {
   listForm.classList.add("hide");
   addListBtn.classList.remove("hide");
   listForm.reset();
+  location.reload();
 }
 
 function addNewList(list) {
@@ -220,6 +222,7 @@ function submitTask(event) {
   taskForm.classList.add("hide");
   addTaskBtn.classList.remove("hide");
   taskForm.reset();
+  location.reload();
 }
 
 function addNewTask(task) {
@@ -255,11 +258,6 @@ function displayTask() {
     taskRightContent.className = "right";
     const deleteTask = document.createElement("i");
     deleteTask.className = "bx bxs-trash";
-    // delete task
-    deleteTask.addEventListener("click", () => {
-      let indexOfTask = taskItems.indexOf(task);
-      eraseTask(indexOfTask);
-    });
     const editTask = document.createElement("i");
     editTask.className = "bx bx-edit-alt";
     taskRightContent.appendChild(document.createTextNode(task.dueDate));
@@ -303,7 +301,14 @@ function displayTask() {
 
     allTaskUL.appendChild(taskName);
 
-    addDeleteButtonListeners();
+    const deleteButtons = document.querySelectorAll(".bx.bxs-trash");
+
+    deleteButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        let indexOfTask = taskItems.indexOf(task);
+        eraseTask(indexOfTask);
+      });
+    });
   }
 }
 
@@ -343,23 +348,11 @@ function taskFinish(taskname, icon) {
 function eraseTask(taskIndex) {
   taskItems.splice(taskIndex, 1);
   saveTask();
-  location.reload()
+  location.reload();
 }
 
 function saveTask() {
   localStorage.setItem("taskItems", JSON.stringify(taskItems));
-}
-
-function addDeleteButtonListeners() {
-  const deleteButtons = document.querySelectorAll(".bx.bxs-trash");
-
-  deleteButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const taskNode = button.closest(".task-content");
-      const index = Array.from(taskNode.parentNode.children).indexOf(taskNode);
-      eraseTask(index);
-    });
-  });
 }
 
 window.onload = function () {
