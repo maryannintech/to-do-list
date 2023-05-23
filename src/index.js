@@ -302,10 +302,9 @@ function displayTask() {
     allTaskUL.appendChild(taskName);
 
     const deleteButtons = document.querySelectorAll(".bx.bxs-trash");
-
     deleteButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        let indexOfTask = taskItems.indexOf(task);
+        let indexOfTask = taskItems.indexOf(task)
         eraseTask(indexOfTask);
       });
     });
