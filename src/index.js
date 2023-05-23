@@ -256,6 +256,10 @@ function displayTask() {
     taskRightContent.className = "right";
     const deleteTask = document.createElement("i");
     deleteTask.className = "bx bxs-trash";
+    deleteTask.addEventListener("click", () => {
+      let indexOfTask = taskItems.indexOf(task);
+      eraseTask(parseInt(indexOfTask));
+    });
     const editTask = document.createElement("i");
     editTask.className = "bx bx-edit-alt";
     taskRightContent.appendChild(document.createTextNode(task.dueDate));
@@ -297,16 +301,21 @@ function displayTask() {
       allListsTask.appendChild(taskNameForList);
     }
 
-    allTaskUL.appendChild(taskName);
-
-    const deleteButtons = document.querySelectorAll(".bx.bxs-trash");
-    deleteButtons.forEach((button) => {
+    const allDeleteBtn = document.querySelectorAll(".bx.bxs-trash");
+    allDeleteBtn.forEach((button, index) => {
       button.addEventListener("click", () => {
-        let indexOfTask = taskItems.indexOf(task)
-        eraseTask(indexOfTask);
+        eraseTask(index);
       });
     });
+
+    allTaskUL.appendChild(taskName);
   }
+}
+
+function eraseTask(taskIndex) {
+  taskItems.splice(taskIndex, 1);
+  saveTask();
+  location.reload();
 }
 
 function makeUL(folder) {
@@ -340,12 +349,6 @@ function makeULVisible(folder) {
 function taskFinish(taskname, icon) {
   icon.classList.toggle("bxs-circle");
   taskname.classList.toggle("done-task");
-}
-
-function eraseTask(taskIndex) {
-  taskItems.splice(taskIndex, 1);
-  saveTask();
-  location.reload();
 }
 
 function saveTask() {
