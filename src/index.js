@@ -255,6 +255,10 @@ function displayTask() {
     taskRightContent.className = "right";
     const deleteTask = document.createElement("i");
     deleteTask.className = "bx bxs-trash";
+    deleteTask.addEventListener("click", () => {
+      let indexOfTask = taskItems.indexOf(task)
+      eraseTask(indexOfTask);
+    })
     const editTask = document.createElement("i");
     editTask.className = "bx bx-edit-alt";
     taskRightContent.appendChild(document.createTextNode(task.dueDate));
@@ -274,16 +278,6 @@ function displayTask() {
     detailsContent.appendChild(document.createTextNode(task.details));
 
     taskDetail.appendChild(detailsContent);
-
-    // delete task 
-    for (let i = 0; i < taskItems.length; i++) {
-      const task = taskItems[i];
-      // ...
-
-      deleteTask.addEventListener("click", () => {
-        eraseTask(i);
-      });
-    }
 
     // check if task is priority
     if (task.priority) {
