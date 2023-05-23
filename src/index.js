@@ -353,8 +353,8 @@ function eraseTask(taskIndex) {
   location.reload();
 }
 
-function addEvenetListenerClone(clone) {
-  
+function addEventListenerClone(clone) {
+
 }
 
 function makeUL(folder) {
