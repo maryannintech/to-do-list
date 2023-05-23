@@ -55,7 +55,6 @@ function submitProj(event) {
   projForm.classList.add("hide");
   addProjBtn.classList.remove("hide");
   projForm.reset();
-  location.reload();
 }
 
 function addNewProj(proj) {
@@ -133,7 +132,6 @@ function submitList(event) {
   listForm.classList.add("hide");
   addListBtn.classList.remove("hide");
   listForm.reset();
-  location.reload();
 }
 
 function addNewList(list) {
