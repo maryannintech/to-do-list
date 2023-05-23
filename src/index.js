@@ -246,7 +246,7 @@ function displayTask() {
     taskIcon.className = "bx bx-circle";
     taskIcon.addEventListener("click", () => {
       taskFinish(nameTask, taskIcon);
-    })
+    });
     nameTask.appendChild(taskIcon);
     nameTask.appendChild(document.createTextNode(task.name));
 
@@ -274,6 +274,16 @@ function displayTask() {
     detailsContent.appendChild(document.createTextNode(task.details));
 
     taskDetail.appendChild(detailsContent);
+
+    // delete task 
+    for (let i = 0; i < taskItems.length; i++) {
+      const task = taskItems[i];
+      // ...
+
+      deleteTask.addEventListener("click", () => {
+        eraseTask(i);
+      });
+    }
 
     // check if task is priority
     if (task.priority) {
@@ -331,29 +341,12 @@ function makeULVisible(folder) {
 function taskFinish(taskname, icon) {
   icon.classList.toggle("bxs-circle");
   taskname.classList.toggle("done-task");
+}
 
-  // Get the current state of finished tasks from local storage
-  let finishedTasks = [];
-  if (localStorage.getItem("finishedTasks")) {
-    finishedTasks = JSON.parse(localStorage.getItem("finishedTasks"));
-  }
-
-  // Check if the task is finished or not
-  const taskIndex = finishedTasks.indexOf(taskname.textContent);
-  if (taskname.classList.contains("done-task")) {
-    // If the task is finished, add it to the finished tasks list
-    if (taskIndex === -1) {
-      finishedTasks.push(taskname.textContent);
-    }
-  } else {
-    // If the task is not finished, remove it from the finished tasks list
-    if (taskIndex !== -1) {
-      finishedTasks.splice(taskIndex, 1);
-    }
-  }
-
-  // Store the updated finished tasks list in local storage
-  localStorage.setItem("finishedTasks", JSON.stringify(finishedTasks));
+function eraseTask(taskIndex) {
+  taskItems.splice(taskIndex, 1);
+  displayTask();
+  saveTask();
 }
 
 function saveTask() {
