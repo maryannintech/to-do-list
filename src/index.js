@@ -1,4 +1,3 @@
-import { forEach } from "lodash";
 import "./style.css";
 
 // toggle function - leave this in here
@@ -256,6 +255,7 @@ function displayTask() {
     taskRightContent.className = "right";
     const deleteTask = document.createElement("i");
     deleteTask.className = "bx bxs-trash";
+    // delete task
     deleteTask.addEventListener("click", () => {
       let indexOfTask = taskItems.indexOf(task);
       eraseTask(indexOfTask);
@@ -302,6 +302,8 @@ function displayTask() {
     }
 
     allTaskUL.appendChild(taskName);
+
+    addDeleteButtonListeners();
   }
 }
 
@@ -340,12 +342,24 @@ function taskFinish(taskname, icon) {
 
 function eraseTask(taskIndex) {
   taskItems.splice(taskIndex, 1);
-  displayTask();
   saveTask();
+  location.reload()
 }
 
 function saveTask() {
   localStorage.setItem("taskItems", JSON.stringify(taskItems));
+}
+
+function addDeleteButtonListeners() {
+  const deleteButtons = document.querySelectorAll(".bx.bxs-trash");
+
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const taskNode = button.closest(".task-content");
+      const index = Array.from(taskNode.parentNode.children).indexOf(taskNode);
+      eraseTask(index);
+    });
+  });
 }
 
 window.onload = function () {
