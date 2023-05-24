@@ -220,6 +220,7 @@ function submitTask(event) {
   taskForm.classList.add("hide");
   addTaskBtn.classList.remove("hide");
   taskForm.reset();
+  location.reload();
 }
 
 function addNewTask(task) {
@@ -296,17 +297,23 @@ function displayTask() {
       const taskProjCopy = taskName.cloneNode(true);
       addTaskToFolder(taskProjCopy, task.folder);
       allTasksProj.appendChild(taskNameForProj);
-      const allDeleteBtn = taskNameForProj.querySelectorAll(".bx.bxs-trash");
+      const taskNameForProjDeleteBtn =
+        taskNameForProj.querySelectorAll(".bx.bxs-trash");
+      const taskProjCopyDeleteBtn =
+        taskProjCopy.querySelectorAll(".bx.bxs-trash");
 
-      addEventListenerClone(allDeleteBtn, task);
+      addEventListenerClone(taskNameForProjDeleteBtn, task);
+      addEventListenerClone(taskProjCopyDeleteBtn, task);
     } else if (task.category === "list") {
       const taskNameForList = taskName.cloneNode(true);
       const taskListCopy = taskName.cloneNode(true);
       addTaskToFolder(taskListCopy, task.folder);
       allListsTask.appendChild(taskNameForList);
-      const allDeleteBtn = taskNameForList.querySelectorAll(".bx.bxs-trash");
+      const taskNameForListDeleteBtn = taskNameForList.querySelectorAll(".bx.bxs-trash");
+      const taskListCopyDeleteBtn = taskListCopy.querySelectorAll(".bx.bxs-trash");
 
-      addEventListenerClone(allDeleteBtn, task);
+      addEventListenerClone(taskNameForListDeleteBtn, task);
+      addEventListenerClone(taskListCopyDeleteBtn, task);
     }
 
     const allEditBtn = document.querySelectorAll(".bx.bx-edit-alt");
