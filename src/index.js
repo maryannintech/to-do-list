@@ -296,16 +296,10 @@ function displayTask() {
       const taskNameForProj = taskName.cloneNode(true);
       const taskProjCopy = taskName.cloneNode(true);
       addTaskToFolder(taskProjCopy, task.folder);
-
       allTasksProj.appendChild(taskNameForProj);
-
-
       const allDeleteBtn = taskNameForProj.querySelectorAll(".bx.bxs-trash");
-      allDeleteBtn.forEach((button, index) => {
-        button.addEventListener("click", () => {
-          eraseTask(index);
-        });
-      });
+
+      addEventListenerClone(allDeleteBtn);
     } else if (task.category === "list") {
       const taskNameForList = taskName.cloneNode(true);
       const taskListCopy = taskName.cloneNode(true);
@@ -354,7 +348,11 @@ function eraseTask(taskIndex) {
 }
 
 function addEventListenerClone(clone) {
-
+  clone.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      eraseTask(index);
+    });
+  });
 }
 
 function makeUL(folder) {
