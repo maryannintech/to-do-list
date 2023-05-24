@@ -220,7 +220,6 @@ function submitTask(event) {
   taskForm.classList.add("hide");
   addTaskBtn.classList.remove("hide");
   taskForm.reset();
-  location.reload();
 }
 
 function addNewTask(task) {
@@ -299,12 +298,15 @@ function displayTask() {
       allTasksProj.appendChild(taskNameForProj);
       const allDeleteBtn = taskNameForProj.querySelectorAll(".bx.bxs-trash");
 
-      addEventListenerClone(allDeleteBtn);
+      addEventListenerClone(allDeleteBtn, task);
     } else if (task.category === "list") {
       const taskNameForList = taskName.cloneNode(true);
       const taskListCopy = taskName.cloneNode(true);
       addTaskToFolder(taskListCopy, task.folder);
       allListsTask.appendChild(taskNameForList);
+      const allDeleteBtn = taskNameForList.querySelectorAll(".bx.bxs-trash");
+
+      addEventListenerClone(allDeleteBtn, task);
     }
 
     const allEditBtn = document.querySelectorAll(".bx.bx-edit-alt");
@@ -341,18 +343,19 @@ function editTaskName(nameElement, task) {
   editInput.focus();
 }
 
+function addEventListenerClone(clone, task) {
+  clone.forEach((button) => {
+    button.addEventListener("click", () => {
+      let indexOfTask = taskItems.indexOf(task);
+      eraseTask(parseInt(indexOfTask));
+    });
+  });
+}
+
 function eraseTask(taskIndex) {
   taskItems.splice(taskIndex, 1);
   saveTask();
   location.reload();
-}
-
-function addEventListenerClone(clone) {
-  clone.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      eraseTask(index);
-    });
-  });
 }
 
 function makeUL(folder) {
