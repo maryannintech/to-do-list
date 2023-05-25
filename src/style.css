@@ -233,6 +233,10 @@ form > button {
   color: darkred;
 }
 
+.bx-trash-alt:hover {
+  color: darkred;
+}
+
 .done-task {
   text-decoration: line-through;
 }

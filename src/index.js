@@ -68,7 +68,7 @@ function displayProj() {
   projUL.innerHTML = "";
   for (const proj of projList) {
     const projItems = document.createElement("button");
-    projItems.className = "projlist-btn"
+    projItems.className = "projlist-btn";
     const folderName = proj.replace(/\s+/g, "");
     projItems.addEventListener("click", () => {
       taskCategory.textContent = `Things to do: ${proj}`;
@@ -84,15 +84,13 @@ function displayProj() {
     folderIcon.className = "bx bxs-folder";
     const iconDIV = document.createElement("div");
     iconDIV.className = "icons";
-    const editButton = document.createElement("i");
-    editButton.className = "bx bxs-edit";
     const deleteBtn = document.createElement("i");
-    deleteBtn.className = "bx bxs-folder-minus";
+    deleteBtn.className = "bx bx-trash-alt";
     deleteBtn.addEventListener("click", () => {
       eraseProj(proj);
-    })
-    iconDIV.append(editButton, deleteBtn)
-    projItems.appendChild(folderIcon)
+    });
+    iconDIV.appendChild(deleteBtn);
+    projItems.appendChild(folderIcon);
     projItems.appendChild(document.createTextNode(proj));
     projItems.appendChild(iconDIV);
     projUL.appendChild(projItems);
@@ -179,17 +177,15 @@ function displayList() {
     folderIcon.className = "bx bxs-folder";
     const iconDIV = document.createElement("div");
     iconDIV.className = "icons";
-    const editButton = document.createElement("i");
-    editButton.className = "bx bxs-edit";
     const deleteBtn = document.createElement("i");
-    deleteBtn.className = "bx bxs-folder-minus";
+    deleteBtn.className = "bx bx-trash-alt";
     deleteBtn.addEventListener("click", () => {
       eraseList(item);
-    })
-    iconDIV.append(editButton, deleteBtn)
+    });
+    iconDIV.appendChild(deleteBtn);
     listName.appendChild(folderIcon);
     listName.appendChild(document.createTextNode(item));
-    listName.appendChild(iconDIV)
+    listName.appendChild(iconDIV);
     listUL.appendChild(listName);
     makeUL(folderName);
   }
@@ -199,29 +195,6 @@ function eraseList(taskIndex) {
   listItems.splice(taskIndex, 1);
   saveList();
   location.reload();
-}
-
-function editListProjName(nameElement, item) {
-  // Create an input element for editing
-  const editName = document.createElement("input");
-  editName .type = "text";
-  editName .value = item;
-
-  // Replace the name element with the input element
-  nameElement.replaceWith(editName );
-
-  // Add a keydown event listener to the input element to capture the edited value
-  editName .addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      const editedName = editName .value;
-      item = editedName;
-      saveTask();
-      displayTask();
-    }
-  });
-
-  // Focus on the input element to enable editing immediately
-  editName.focus();
 }
 
 function saveList() {
