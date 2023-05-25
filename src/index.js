@@ -325,17 +325,17 @@ function displayTask() {
         taskListCopy.querySelectorAll(".bx.bx-edit-alt");
 
       const taskNameForListEditName =
-        taskNameForList.querySelectorAll(".task-content");
+        taskNameForList.querySelector(".name");
       const taskListCopyEditName =
-        taskListCopy.querySelectorAll(".task-content");
+        taskListCopy.querySelector(".name");
 
       const taskNameForListEditDate =
-        taskNameForList.querySelectorAll(".right");
-      const taskListCopyEditDate = taskListCopy.querySelectorAll(".right");
+        taskNameForList.querySelector(".right");
+      const taskListCopyEditDate = taskListCopy.querySelector(".right");
 
       const taskNameForListEditDetail =
-        taskNameForList.querySelectorAll(".right");
-      const taskListCopyEditDetail = taskListCopy.querySelectorAll(".right");
+        taskNameForList.querySelector(".detail-content");
+      const taskListCopyEditDetail = taskListCopy.querySelector(".detail-content");
 
       addEventListenerEditBtnClone(
         taskNameForListEditBtn,
@@ -391,7 +391,6 @@ function editTaskName(nameElement, task) {
   // Create an input element for editing
   const editInput = document.createElement("input");
   editInput.type = "text";
-  editInput.id = "editedName";
   editInput.value = task.name;
 
   // Replace the name element with the input element
@@ -415,7 +414,6 @@ function editTaskDate(dateElement, task) {
   // Create an input element for editing
   const editDate = document.createElement("input");
   editDate.type = "date";
-  editDate.id = "editedDate";
   editDate.value = task.dueDate;
 
   // Replace the name element with the input element
@@ -439,7 +437,6 @@ function editTaskDetails(detailElement, task) {
   // Create an input element for editing
   const editDetail = document.createElement("input");
   editDetail.type = "text";
-  editDetail.id = "editedDetail";
   editDetail.value = task.details;
 
   // Replace the name element with the input element
@@ -469,17 +466,25 @@ function addEventListenerDeleteBtnClone(clone, task) {
 }
 
 function addEventListenerEditBtnClone(clone, element, task, type) {
-  clone.forEach((button) => {
-    button.addEventListener("click", () => {
-      if (type === "name") {
+  if (type === "name") {
+    clone.forEach((button) => {
+      button.addEventListener("click", () => {
         editTaskName(element, task);
-      } else if (type === "date") {
-        editTaskDate(element, task);
-      } else if (type === "detail") {
-        editTaskDetails(element, task);
-      }
+      });
     });
-  });
+  } else if (type === "date") {
+    clone.forEach((button) => {
+      button.addEventListener("click", () => {
+        editTaskDate(element, task);
+      });
+    });
+  } else if (type === "detail") {
+    clone.forEach((button) => {
+      button.addEventListener("click", () => {
+        editTaskDetails(element, task);
+      });
+    });
+  }
 }
 
 function eraseTask(taskIndex) {
