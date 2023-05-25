@@ -266,6 +266,7 @@ function displayTask() {
       editTaskName(nameTask, task);
       editTaskDate(taskRightContent, task);
       editTaskDetails(detailsContent, task);
+      alert("you can only edit one input at a time")
     });
     taskRightContent.appendChild(document.createTextNode(task.dueDate));
     taskRightContent.append(deleteTask, editTask);
@@ -376,13 +377,6 @@ function displayTask() {
       );
     }
 
-    const allEditBtn = document.querySelectorAll(".bx.bx-edit-alt");
-    allEditBtn.forEach((button) => {
-      button.addEventListener("click", () => {
-        editTaskName(nameTask, task);
-      });
-    });
-
     allTaskUL.appendChild(taskName);
   }
 }
@@ -428,9 +422,6 @@ function editTaskDate(dateElement, task) {
       displayTask();
     }
   });
-
-  // Focus on the input element to enable editing immediately
-  editDate.focus();
 }
 
 function editTaskDetails(detailElement, task) {
@@ -451,9 +442,6 @@ function editTaskDetails(detailElement, task) {
       displayTask();
     }
   });
-
-  // Focus on the input element to enable editing immediately
-  editDetail.focus();
 }
 
 function addEventListenerDeleteBtnClone(clone, task) {
@@ -470,18 +458,21 @@ function addEventListenerEditBtnClone(clone, element, task, type) {
     clone.forEach((button) => {
       button.addEventListener("click", () => {
         editTaskName(element, task);
+        alert("you can only edit one input at a time")
       });
     });
   } else if (type === "date") {
     clone.forEach((button) => {
       button.addEventListener("click", () => {
         editTaskDate(element, task);
+        alert("you can only edit one input at a time")
       });
     });
   } else if (type === "detail") {
     clone.forEach((button) => {
       button.addEventListener("click", () => {
         editTaskDetails(element, task);
+        alert("you can only edit one input at a time")
       });
     });
   }
