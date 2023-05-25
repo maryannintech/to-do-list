@@ -266,7 +266,7 @@ function displayTask() {
       editTaskName(nameTask, task);
       editTaskDate(taskRightContent, task);
       editTaskDetails(detailsContent, task);
-      alert("you can only edit one input at a time")
+      alert("you can only edit one input at a time");
     });
     taskRightContent.appendChild(document.createTextNode(task.dueDate));
     taskRightContent.append(deleteTask, editTask);
@@ -304,9 +304,62 @@ function displayTask() {
         taskNameForProj.querySelectorAll(".bx.bxs-trash");
       const taskProjCopyDeleteBtn =
         taskProjCopy.querySelectorAll(".bx.bxs-trash");
-
       addEventListenerDeleteBtnClone(taskNameForProjDeleteBtn, task);
       addEventListenerDeleteBtnClone(taskProjCopyDeleteBtn, task);
+
+      const taskNameForProjEditBtn =
+        taskNameForProj.querySelectorAll(".bx.bx-edit-alt");
+      const taskProjCopyEditBtn =
+        taskProjCopy.querySelectorAll(".bx.bx-edit-alt");
+
+      const taskNameForProjEditName = taskNameForProj.querySelector(".name");
+      const taskProjCopyEditName = taskProjCopy.querySelector(".name");
+
+      const taskNameForProjEditDate = taskNameForProj.querySelector(".right");
+      const taskProjCopyEditDate = taskProjCopy.querySelector(".right");
+
+      const taskNameForProjEditDetail =
+        taskNameForProj.querySelector(".detail-content");
+      const taskProjCopyEditDetail =
+        taskProjCopy.querySelector(".detail-content");
+
+      addEventListenerEditBtnClone(
+        taskNameForProjEditBtn,
+        taskNameForProjEditName,
+        task,
+        "name"
+      );
+      addEventListenerEditBtnClone(
+        taskNameForProjEditBtn,
+        taskNameForProjEditDate,
+        task,
+        "date"
+      );
+      addEventListenerEditBtnClone(
+        taskNameForProjEditBtn,
+        taskNameForProjEditDetail,
+        task,
+        "detail"
+      );
+
+      addEventListenerEditBtnClone(
+        taskProjCopyEditBtn,
+        taskProjCopyEditName,
+        task,
+        "name"
+      );
+      addEventListenerEditBtnClone(
+        taskProjCopyEditBtn,
+        taskProjCopyEditDate,
+        task,
+        "date"
+      );
+      addEventListenerEditBtnClone(
+        taskProjCopyEditBtn,
+        taskProjCopyEditDetail,
+        task,
+        "detail"
+      );
     } else if (task.category === "list") {
       const taskNameForList = taskName.cloneNode(true);
       const taskListCopy = taskName.cloneNode(true);
@@ -325,18 +378,16 @@ function displayTask() {
       const taskListCopyEditBtn =
         taskListCopy.querySelectorAll(".bx.bx-edit-alt");
 
-      const taskNameForListEditName =
-        taskNameForList.querySelector(".name");
-      const taskListCopyEditName =
-        taskListCopy.querySelector(".name");
+      const taskNameForListEditName = taskNameForList.querySelector(".name");
+      const taskListCopyEditName = taskListCopy.querySelector(".name");
 
-      const taskNameForListEditDate =
-        taskNameForList.querySelector(".right");
+      const taskNameForListEditDate = taskNameForList.querySelector(".right");
       const taskListCopyEditDate = taskListCopy.querySelector(".right");
 
       const taskNameForListEditDetail =
         taskNameForList.querySelector(".detail-content");
-      const taskListCopyEditDetail = taskListCopy.querySelector(".detail-content");
+      const taskListCopyEditDetail =
+        taskListCopy.querySelector(".detail-content");
 
       addEventListenerEditBtnClone(
         taskNameForListEditBtn,
@@ -458,21 +509,19 @@ function addEventListenerEditBtnClone(clone, element, task, type) {
     clone.forEach((button) => {
       button.addEventListener("click", () => {
         editTaskName(element, task);
-        alert("you can only edit one input at a time")
+        alert("you can only edit one input at a time");
       });
     });
   } else if (type === "date") {
     clone.forEach((button) => {
       button.addEventListener("click", () => {
         editTaskDate(element, task);
-        alert("you can only edit one input at a time")
       });
     });
   } else if (type === "detail") {
     clone.forEach((button) => {
       button.addEventListener("click", () => {
         editTaskDetails(element, task);
-        alert("you can only edit one input at a time")
       });
     });
   }
