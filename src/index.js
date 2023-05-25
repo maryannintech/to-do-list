@@ -264,6 +264,8 @@ function displayTask() {
     editTask.className = "bx bx-edit-alt";
     editTask.addEventListener("click", () => {
       editTaskName(nameTask, task);
+      editTaskDate(taskRightContent, task);
+      editTaskDetails(detailsContent, task);
     });
     taskRightContent.appendChild(document.createTextNode(task.dueDate));
     taskRightContent.append(deleteTask, editTask);
@@ -309,8 +311,10 @@ function displayTask() {
       const taskListCopy = taskName.cloneNode(true);
       addTaskToFolder(taskListCopy, task.folder);
       allListsTask.appendChild(taskNameForList);
-      const taskNameForListDeleteBtn = taskNameForList.querySelectorAll(".bx.bxs-trash");
-      const taskListCopyDeleteBtn = taskListCopy.querySelectorAll(".bx.bxs-trash");
+      const taskNameForListDeleteBtn =
+        taskNameForList.querySelectorAll(".bx.bxs-trash");
+      const taskListCopyDeleteBtn =
+        taskListCopy.querySelectorAll(".bx.bxs-trash");
 
       addEventListenerClone(taskNameForListDeleteBtn, task);
       addEventListenerClone(taskListCopyDeleteBtn, task);
@@ -331,6 +335,7 @@ function editTaskName(nameElement, task) {
   // Create an input element for editing
   const editInput = document.createElement("input");
   editInput.type = "text";
+  editInput.id = "editedName";
   editInput.value = task.name;
 
   // Replace the name element with the input element
@@ -348,6 +353,54 @@ function editTaskName(nameElement, task) {
 
   // Focus on the input element to enable editing immediately
   editInput.focus();
+}
+
+function editTaskDate(dateElement, task) {
+  // Create an input element for editing
+  const editDate = document.createElement("input");
+  editDate.type = "date";
+  editDate.id = "editedDate";
+  editDate.value = task.dueDate;
+
+  // Replace the name element with the input element
+  dateElement.replaceWith(editDate);
+
+  // Add a keydown event listener to the input element to capture the edited value
+  editDate.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      const editedDate = editDate.value;
+      task.dueDate = editedDate;
+      saveTask();
+      displayTask();
+    }
+  });
+
+  // Focus on the input element to enable editing immediately
+  editDate.focus();
+}
+
+function editTaskDetails(detailElement, task) {
+  // Create an input element for editing
+  const editDetail = document.createElement("input");
+  editDetail.type = "text";
+  editDetail.id = "editedDetail";
+  editDetail.value = task.details;
+
+  // Replace the name element with the input element
+  detailElement.replaceWith(editDetail);
+
+  // Add a keydown event listener to the input element to capture the edited value
+  editDetail.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      const editedDetail = editDetail.value;
+      task.details = editedDetail;
+      saveTask();
+      displayTask();
+    }
+  });
+
+  // Focus on the input element to enable editing immediately
+  editDetail.focus();
 }
 
 function addEventListenerClone(clone, task) {
