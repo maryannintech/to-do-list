@@ -304,20 +304,76 @@ function displayTask() {
       const taskProjCopyDeleteBtn =
         taskProjCopy.querySelectorAll(".bx.bxs-trash");
 
-      addEventListenerClone(taskNameForProjDeleteBtn, task);
-      addEventListenerClone(taskProjCopyDeleteBtn, task);
+      addEventListenerDeleteBtnClone(taskNameForProjDeleteBtn, task);
+      addEventListenerDeleteBtnClone(taskProjCopyDeleteBtn, task);
     } else if (task.category === "list") {
       const taskNameForList = taskName.cloneNode(true);
       const taskListCopy = taskName.cloneNode(true);
       addTaskToFolder(taskListCopy, task.folder);
       allListsTask.appendChild(taskNameForList);
+
       const taskNameForListDeleteBtn =
         taskNameForList.querySelectorAll(".bx.bxs-trash");
       const taskListCopyDeleteBtn =
         taskListCopy.querySelectorAll(".bx.bxs-trash");
+      addEventListenerDeleteBtnClone(taskNameForListDeleteBtn, task);
+      addEventListenerDeleteBtnClone(taskListCopyDeleteBtn, task);
 
-      addEventListenerClone(taskNameForListDeleteBtn, task);
-      addEventListenerClone(taskListCopyDeleteBtn, task);
+      const taskNameForListEditBtn =
+        taskNameForList.querySelectorAll(".bx.bx-edit-alt");
+      const taskListCopyEditBtn =
+        taskListCopy.querySelectorAll(".bx.bx-edit-alt");
+
+      const taskNameForListEditName =
+        taskNameForList.querySelectorAll(".task-content");
+      const taskListCopyEditName =
+        taskListCopy.querySelectorAll(".task-content");
+
+      const taskNameForListEditDate =
+        taskNameForList.querySelectorAll(".right");
+      const taskListCopyEditDate = taskListCopy.querySelectorAll(".right");
+
+      const taskNameForListEditDetail =
+        taskNameForList.querySelectorAll(".right");
+      const taskListCopyEditDetail = taskListCopy.querySelectorAll(".right");
+
+      addEventListenerEditBtnClone(
+        taskNameForListEditBtn,
+        taskNameForListEditName,
+        task,
+        "name"
+      );
+      addEventListenerEditBtnClone(
+        taskNameForListEditBtn,
+        taskNameForListEditDate,
+        task,
+        "date"
+      );
+      addEventListenerEditBtnClone(
+        taskNameForListEditBtn,
+        taskNameForListEditDetail,
+        task,
+        "detail"
+      );
+
+      addEventListenerEditBtnClone(
+        taskListCopyEditBtn,
+        taskListCopyEditName,
+        task,
+        "name"
+      );
+      addEventListenerEditBtnClone(
+        taskListCopyEditBtn,
+        taskListCopyEditDate,
+        task,
+        "date"
+      );
+      addEventListenerEditBtnClone(
+        taskListCopyEditBtn,
+        taskListCopyEditDetail,
+        task,
+        "detail"
+      );
     }
 
     const allEditBtn = document.querySelectorAll(".bx.bx-edit-alt");
@@ -403,11 +459,25 @@ function editTaskDetails(detailElement, task) {
   editDetail.focus();
 }
 
-function addEventListenerClone(clone, task) {
+function addEventListenerDeleteBtnClone(clone, task) {
   clone.forEach((button) => {
     button.addEventListener("click", () => {
       let indexOfTask = taskItems.indexOf(task);
       eraseTask(parseInt(indexOfTask));
+    });
+  });
+}
+
+function addEventListenerEditBtnClone(clone, element, task, type) {
+  clone.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (type === "name") {
+        editTaskName(element, task);
+      } else if (type === "date") {
+        editTaskDate(element, task);
+      } else if (type === "detail") {
+        editTaskDetails(element, task);
+      }
     });
   });
 }
