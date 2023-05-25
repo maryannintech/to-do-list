@@ -16,9 +16,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new FaviconsWebpackPlugin({
-      logo: './src/favicon.ico.png',
-    }),
-  ],
 };
