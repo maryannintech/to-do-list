@@ -292,3 +292,14 @@ footer {
   margin-bottom: 15px;
 }
 
+.projlist-btn {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.icons {
+  display: flex;
+  margin-left: auto;
+  gap: 5px;
+}
