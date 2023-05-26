@@ -1,7 +1,196 @@
-export function initTask() {
+// app logic
+
+export function initToDoList() {
   let folderClicked = null;
-  const allListsTask = document.querySelector(".list-tasks");
+
+  // proj
+  const projForm = document.querySelector(".proj-form");
+  projForm.addEventListener("submit", submitProj);
+  const projCancel = document.querySelector(".proj-cancel");
+  projCancel.addEventListener("click", () => {
+    projForm.classList.add("hide");
+    addProjBtn.classList.remove("hide");
+    projForm.reset();
+  });
+  const addProjBtn = document.querySelector(".addproj");
+  addProjBtn.addEventListener("click", () => {
+    projForm.classList.remove("hide");
+    addProjBtn.classList.add("hide");
+  });
+
   const allTasksProj = document.querySelector(".proj-tasks");
+  const allTaskProjBtn = document.querySelector(".task-proj");
+  allTaskProjBtn.addEventListener("click", () => {
+    allTasksProj.classList.remove("hide");
+    taskCategory.textContent = "Things to do: Project";
+    allListsTask.classList.add("hide");
+    allTaskUL.classList.add("hide");
+    hideAllTaskUL();
+    allTasksProj.classList.remove("hide");
+  });
+
+  let projList = [];
+  if (localStorage.getItem("projList")) {
+    projList = JSON.parse(localStorage.getItem("projList"));
+  }
+
+  function submitProj(event) {
+    event.preventDefault();
+    const projName = document.querySelector("#proj-name");
+    const proj = projName.value.trim();
+    addNewProj(proj);
+
+    projForm.classList.add("hide");
+    addProjBtn.classList.remove("hide");
+    projForm.reset();
+  }
+
+  function addNewProj(proj) {
+    projList.push(proj);
+    displayProj();
+    saveProj();
+  }
+
+  function displayProj() {
+    const projUL = document.querySelector(".projects-ul");
+    projUL.innerHTML = "";
+    for (const proj of projList) {
+      const projItems = document.createElement("button");
+      projItems.className = "projlist-btn";
+      const folderName = proj.replace(/\s+/g, "");
+      projItems.addEventListener("click", () => {
+        taskCategory.textContent = `Things to do: ${proj}`;
+        folderClicked = folderName;
+        allListsTask.classList.add("hide");
+        allTaskUL.classList.add("hide");
+        allTasksProj.classList.add("hide");
+        console.log(folderClicked);
+        hideAllTaskUL();
+        makeULVisible(folderName);
+      });
+      const folderIcon = document.createElement("i");
+      folderIcon.className = "bx bxs-folder";
+      const iconDIV = document.createElement("div");
+      iconDIV.className = "icons";
+      const deleteBtn = document.createElement("i");
+      deleteBtn.className = "bx bx-trash-alt";
+      deleteBtn.addEventListener("click", () => {
+        eraseProj(proj);
+      });
+      iconDIV.appendChild(deleteBtn);
+      projItems.appendChild(folderIcon);
+      projItems.appendChild(document.createTextNode(proj));
+      projItems.appendChild(iconDIV);
+      projUL.appendChild(projItems);
+      makeUL(folderName);
+    }
+  }
+
+  function eraseProj(taskIndex) {
+    projList.splice(taskIndex, 1);
+    saveProj();
+    location.reload();
+  }
+
+  function saveProj() {
+    localStorage.setItem("projList", JSON.stringify(projList));
+  }
+
+  // lists
+  const listForm = document.querySelector(".list-form");
+  listForm.addEventListener("submit", submitList);
+  const listCancel = document.querySelector(".list-cancel");
+  listCancel.addEventListener("click", () => {
+    listForm.classList.add("hide");
+    addListBtn.classList.remove("hide");
+  });
+
+  const addListBtn = document.querySelector(".addlist");
+  addListBtn.addEventListener("click", () => {
+    listForm.classList.remove("hide");
+    addListBtn.classList.add("hide");
+    listForm.reset();
+  });
+  const allListTaskBtn = document.querySelector(".task-list");
+  const allListsTask = document.querySelector(".list-tasks");
+  allListTaskBtn.addEventListener("click", () => {
+    allListsTask.classList.remove("hide");
+    taskCategory.textContent = "Things to do: List";
+    allTasksProj.classList.add("hide");
+    allTaskUL.classList.add("hide");
+    hideAllTaskUL();
+    allListsTask.classList.remove("hide");
+  });
+
+  let listItems = [];
+  if (localStorage.getItem("listItems")) {
+    listItems = JSON.parse(localStorage.getItem("listItems"));
+  }
+
+  function submitList(event) {
+    event.preventDefault();
+    const listName = document.querySelector("#list-name");
+    const list = listName.value.trim();
+    addNewList(list);
+
+    listForm.classList.add("hide");
+    addListBtn.classList.remove("hide");
+    listForm.reset();
+  }
+
+  function addNewList(list) {
+    listItems.push(list);
+    displayList();
+    saveList();
+  }
+
+  function displayList() {
+    const listUL = document.querySelector(".lists-ul");
+    listUL.innerHTML = "";
+    for (const item of listItems) {
+      const listName = document.createElement("button");
+      listName.className = "projlist-btn";
+      const folderName = item.replace(/\s+/g, "");
+      listName.addEventListener("click", () => {
+        taskCategory.textContent = `Things to do: ${item}`;
+        folderClicked = folderName;
+        allListsTask.classList.add("hide");
+        allTaskUL.classList.add("hide");
+        allTasksProj.classList.add("hide");
+        console.log(folderClicked);
+        hideAllTaskUL();
+        makeULVisible(folderName);
+      });
+      const folderIcon = document.createElement("i");
+      folderIcon.className = "bx bxs-folder";
+      const iconDIV = document.createElement("div");
+      iconDIV.className = "icons";
+      const deleteBtn = document.createElement("i");
+      deleteBtn.className = "bx bx-trash-alt";
+      deleteBtn.addEventListener("click", () => {
+        eraseList(item);
+      });
+      iconDIV.appendChild(deleteBtn);
+      listName.appendChild(folderIcon);
+      listName.appendChild(document.createTextNode(item));
+      listName.appendChild(iconDIV);
+      listUL.appendChild(listName);
+      makeUL(folderName);
+    }
+  }
+
+  function eraseList(taskIndex) {
+    listItems.splice(taskIndex, 1);
+    saveList();
+    location.reload();
+  }
+
+  function saveList() {
+    localStorage.setItem("listItems", JSON.stringify(listItems));
+  }
+
+  // tasks
+
   const taskCategory = document.querySelector(".task-h2");
   const taskForm = document.querySelector(".task-form");
   taskForm.addEventListener("submit", submitTask);
@@ -364,6 +553,13 @@ export function initTask() {
     location.reload();
   }
 
+  function makeUL(folder) {
+    const mainTaskDIV = document.querySelector(".main-list");
+    const folderUL = document.createElement("ul");
+    folderUL.className = `${folder}-ul`;
+    mainTaskDIV.appendChild(folderUL);
+  }
+
   function addTaskToFolder(task, folder) {
     const folderTaskContainer = document.querySelector(`.${folder}-ul`);
     if (folderTaskContainer) {
@@ -378,6 +574,13 @@ export function initTask() {
     });
   }
 
+  function makeULVisible(folder) {
+    const folderUL = document.querySelector(`.${folder}-ul`);
+    if (folderUL) {
+      folderUL.classList.remove("hide");
+    }
+  }
+
   function taskFinish(taskname, icon) {
     icon.classList.toggle("bxs-circle");
     taskname.classList.toggle("done-task");
@@ -388,6 +591,8 @@ export function initTask() {
   }
 
   window.onload = function () {
+    displayProj();
+    displayList();
     displayTask();
     hideAllTaskUL();
     allTaskUL.classList.remove("hide");

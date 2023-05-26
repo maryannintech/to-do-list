@@ -1,5 +1,3 @@
-import "./style.css";
-
 export function initToggle() {
   const modeToggle = document.querySelector(".toggle");
   const headerTagline = document.querySelector(".tagline");

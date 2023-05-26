@@ -1,8 +1,7 @@
 import "./style.css";
-import { initProject } from "./modules/proj";
-import { initList } from "./modules/list";
-import { initTask } from "./modules/task";
+import { initToggle } from "./modules/toggle-mode";
+import { initToDoList } from "./modules/functions";
 
-initProject();
-initList();
-initTask();
+initToggle();
+initToDoList();
+
