@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo List</title>
+    <script src="main.js" defer></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <h1 class="title"><i class="bx bx-list-check"></i> ToDo List</h1>
+      <p class="tagline">productivity made simple</p>
+      <div class="toggle"><i class='bx bx-brightness'></i><p class="mode">change mode</p></div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <div class="folders">
+        <!-- PROJECT NAVS -->
+        <!--PROJECT-->
+        <div class="projects">
+          <h2>Projects</h2>
+          <hr />
+          <button type="button" class="addproj">
+            <i class="bx bx-folder-plus"></i> Add new project
+          </button>
+          <form class="proj-form hide">
+            <label for="proj-name">Project name:</label
+            ><input
+              type="text"
+              id="proj-name"
+              name="p-name"
+              required
+              placeholder="enter project name"
+            />
+            <div class="form-buttons">
+              <button type="submit" class="proj-add">Add</button>
+              <button type="button" class="proj-cancel">Cancel</button>
+            </div>
+          </form>
+          <button type="button" class="task-proj">
+            <i class="bx bx-folder-open"></i> All your project's tasks
+          </button>
+          <hr />
+          <ul class="projects-ul"></ul>
+        </div>
+        <!-- LISTS -->
+        <div class="lists">
+          <h2>Lists</h2>
+          <hr />
+          <button type="button" class="addlist">
+            <i class="bx bx-folder-plus"></i> Add new list
+          </button>
+          <form class="list-form hide" action="" method="post">
+            <label for="list-name">List name:</label
+            ><input
+              type="text"
+              id="list-name"
+              name="l-name"
+              required
+              placeholder="enter list name"
+            />
+            <div class="form-buttons">
+              <button type="submit" class="list-add">Add</button>
+              <button type="button" class="list-cancel">Cancel</button>
+            </div>
+          </form>
+          <button type="button" class="task-list">
+            <i class="bx bx-folder-open"></i> All your list's tasks
+          </button>
+          <hr />
+          <ul class="lists-ul"></ul>
+        </div>
+      </div>
+
+      <!-- TASK TAB -->
+      <div class="main-list">
+        <h2 class="task-h2">Things to do: All</h2>
+        <button type="button" class="all-task-btn">
+          <i class="bx bx-list-ul"></i> view all your tasks
+        </button>
+        <hr />
+        <button type="button" class="addtask button-center">
+          <i class="bx bx-pencil"></i> Add task
+        </button>
+        <form action="" method="post" class="task-form hide">
+          <label for="task-title">Title: </label
+          ><input
+            type="text"
+            name="title"
+            id="task-title"
+            required
+            placeholder="title of task"
+          />
+          <label for="details">Description/Notes/Details: </label
+          ><input
+            type="text"
+            name="details"
+            id="details"
+            placeholder="limited to 50 characters only"
+            maxlength="50"
+            required
+          />
+          <label for="dueDate">Due date: </label
+          ><input type="date" name="dueDate" id="dueDate" required />
+          <label for="priority">Check the box if the task is a priority </label
+          ><input type="checkbox" name="priority" id="priority" value="yes" />
+          <label for="type">In what category is this task?</label
+          ><select id="type" name="type" required>
+            <option value="proj" selected>Project</option>
+            <option value="list">List</option>
+          </select>
+          <div class="form-buttons">
+            <button type="submit" class="button-center task-add">
+              Add task
+            </button>
+            <button type="button" class="button-center task-cancel">
+              Cancel
+            </button>
+          </div>
+        </form>
+        <ul class="all-tasks"></ul>
+        <ul class="proj-tasks hide"></ul>
+        <ul class="list-tasks hide"></ul>
+      </div>
+    </main>
+
+    <!---FOOTER-->
+    <footer><p>made by <a target="_blank" rel="noopener" href="https://t.co/OQG2u65QTQ"><i class="bx bxl-github"></i></a> mary ann</p></footer>
+  </body>
+</html>
