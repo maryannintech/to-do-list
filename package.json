@@ -1,11 +1,16 @@
 {
   "name": "to-do-list",
   "version": "1.0.0",
+  "repository": {
+    "url": "git+https://github.com/maryannintech/to-do-list.git"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +18,7 @@
   "devDependencies": {
     "css-loader": "^6.7.3",
     "favicons-webpack-plugin": "^6.0.0",
+    "gh-pages": "^5.0.0",
     "style-loader": "^3.3.2",
     "webpack": "^5.82.1",
     "webpack-cli": "^5.1.1"
